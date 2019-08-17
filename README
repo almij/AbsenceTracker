@@ -1,0 +1,15 @@
+An application to track person absences. 
+Presumably for a corporate use, can also be used by any type of team or collaboration groups.
+
+Plans:
+-sql db 
+-text file db replicating sql structure file by table
+-class library
+-gui
+
+GUI plans:
+-win forms
+-wpf
+-asp.net webpage?
+-android app?
+-ios app?
