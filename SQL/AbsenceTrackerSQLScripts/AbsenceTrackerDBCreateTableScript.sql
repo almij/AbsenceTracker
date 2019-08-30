@@ -39,7 +39,7 @@ CREATE TABLE dbo.person
     CONSTRAINT fk_person_department FOREIGN KEY(department_id) REFERENCES department(department_id)
 );
 
-CREATE TABLE dbo.substitute
+CREATE TABLE dbo.personnel_substitution
 (
     person_id INT NOT NULL,
     substitute_person_id INT NOT NULL,
@@ -61,12 +61,12 @@ CREATE TABLE dbo.project_team
 
 CREATE TABLE dbo.supervision
 (
-    subordinate_person_id INT NOT NULL,
+    person_id INT NOT NULL,
     supervisor_person_id INT NOT NULL,
 
-    CONSTRAINT fk_supervision_person_1 FOREIGN KEY (subordinate_person_id) REFERENCES person(person_id),
+    CONSTRAINT fk_supervision_person_1 FOREIGN KEY (person_id) REFERENCES person(person_id),
     CONSTRAINT fk_supervision_person_2 FOREIGN KEY (supervisor_person_id) REFERENCES person(person_id),
-	CONSTRAINT pk_supervision_combo PRIMARY KEY (subordinate_person_id, supervisor_person_id)
+    CONSTRAINT pk_supervision_combo PRIMARY KEY (person_id, supervisor_person_id)
 );
 
 CREATE TABLE dbo.absence_type
