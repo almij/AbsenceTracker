@@ -32,6 +32,7 @@ CREATE TABLE dbo.person
     started_at_date DATE,
     project_id INT NULL,
     department_id INT NULL,
+    days_off_balance INT,
 
     CONSTRAINT unique_person_username UNIQUE (username),
     CONSTRAINT pk_person_id PRIMARY KEY (person_id),
