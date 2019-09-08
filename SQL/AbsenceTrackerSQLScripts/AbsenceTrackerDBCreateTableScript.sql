@@ -85,6 +85,7 @@ CREATE TABLE dbo.absence
     person_id INT NOT NULL,
     effective_date DATE NOT NULL,
     expiration_date DATE NOT NULL,
+    worked_on_holidays_days INT NULL,
     
     CONSTRAINT pk_absence_id PRIMARY KEY (absence_id),
     CONSTRAINT fk_absense_absence_type FOREIGN KEY (absence_type_id) REFERENCES absence_type(absence_type_id),
