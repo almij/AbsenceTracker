@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AbsenceTrackerLibrary.Models
 {
     public class PersonModel
     {
-        public int PersonId { get; set; }
+        public int Id { get; set; }
         public string Username { get; set; }
         public byte[] PasswordHash { get; set; }
         public string FirstName { get; set; }
@@ -14,8 +15,12 @@ namespace AbsenceTrackerLibrary.Models
         public string Email { get; set; }
         public string FullNameForDocuments { get; set; }
         public DateTime StartedAt { get; set; }
-        public ProjectModel Project { get; set; }
         public DepartmentModel Department { get; set; }
         public int DaysOffBalance { get; set; }
+        public List<ProjectModel> ProjectsInvolvedIn { get; set; }
+        public List<AbsenceModel> Absences { get; set; }
+        public List<PersonModel> Supervisors { get; set; }
+        public List<PersonModel> Subordinates { get; set; }
+        public List<PersonModel> Substitutes { get; set; }
     }
 }
