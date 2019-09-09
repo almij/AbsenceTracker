@@ -29,8 +29,7 @@ CREATE TABLE dbo.person
     middle_name NVARCHAR(50),
     email NVARCHAR(100) NOT NULL,
     full_name_for_documents NVARCHAR(300),
-    started_at_date DATE,
-    project_id INT NULL,
+    started_at DATE,
     department_id INT NULL,
     days_off_balance INT,
 
@@ -83,9 +82,9 @@ CREATE TABLE dbo.absence
     absence_id INT NOT NULL IDENTITY,
     absence_type_id INT NOT NULL,
     person_id INT NOT NULL,
-    effective_date DATE NOT NULL,
-    expiration_date DATE NOT NULL,
-    worked_on_holidays_days INT NULL,
+    effective_from DATE NOT NULL,
+    expires_on DATE NOT NULL,
+    days_worked_on_holidays INT,
     
     CONSTRAINT pk_absence_id PRIMARY KEY (absence_id),
     CONSTRAINT fk_absense_absence_type FOREIGN KEY (absence_type_id) REFERENCES absence_type(absence_type_id),
@@ -93,5 +92,6 @@ CREATE TABLE dbo.absence
     CONSTRAINT check_absence_effective_date_le_expiration_date 
         CHECK(effective_date <= expiration_date),
     CONSTRAINT unique_absence_person_id_effective_date_expiration_date
-        UNIQUE(person_id, effective_date, expiration_date)
+        UNIQUE(person_id, effective_date, expiration_date),
+    CONSTRAINT default_absence_days_worked_on_holidays_zero DEFAULT 0 for days_worked_on_holidays
 );
