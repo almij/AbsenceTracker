@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace AbsenceTrackerUI.Forms
 {
-    public partial class AbsenceTrackerDashboard : Form
+    public partial class AbsenceDetails : Form
     {
-        public AbsenceTrackerDashboard()
+        public AbsenceDetails()
         {
             InitializeComponent();
         }
 
-        private void FirstNameLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Label1_Click(object sender, EventArgs e)
         {
 
         }

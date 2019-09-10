@@ -57,6 +57,8 @@
             this.EditSupervisorsButton = new System.Windows.Forms.Button();
             this.EditSubordinatesButton = new System.Windows.Forms.Button();
             this.EditSubstitutesButton = new System.Windows.Forms.Button();
+            this.SaveButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // UsernameLabel
@@ -304,11 +306,31 @@
             this.EditSubstitutesButton.Text = "Edit";
             this.EditSubstitutesButton.UseVisualStyleBackColor = true;
             // 
+            // SaveButton
+            // 
+            this.SaveButton.Location = new System.Drawing.Point(17, 734);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(155, 47);
+            this.SaveButton.TabIndex = 8;
+            this.SaveButton.Text = "Save";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.Location = new System.Drawing.Point(183, 734);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(155, 47);
+            this.CancelButton.TabIndex = 9;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            // 
             // PersonalData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 690);
+            this.ClientSize = new System.Drawing.Size(873, 793);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.EditSubstitutesButton);
             this.Controls.Add(this.EditSubordinatesButton);
             this.Controls.Add(this.EditSupervisorsButton);
@@ -379,5 +401,7 @@
         private System.Windows.Forms.Button EditSupervisorsButton;
         private System.Windows.Forms.Button EditSubordinatesButton;
         private System.Windows.Forms.Button EditSubstitutesButton;
+        private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.Button CancelButton;
     }
 }
