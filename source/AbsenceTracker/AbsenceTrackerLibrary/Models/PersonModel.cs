@@ -5,7 +5,7 @@ namespace AbsenceTrackerLibrary.Models
 {
     public class PersonModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Username { get; set; }
         public byte[] PasswordHash { get; set; }
         public string FirstName { get; set; }
