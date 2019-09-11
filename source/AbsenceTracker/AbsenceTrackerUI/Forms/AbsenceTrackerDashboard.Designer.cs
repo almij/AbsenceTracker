@@ -41,11 +41,13 @@
             this.DetailsButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.RemoveButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.EditPersonalDataButton = new System.Windows.Forms.Button();
+            this.NewAbsenceButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // FullNameTextBox
             // 
+            this.FullNameTextBox.Enabled = false;
             this.FullNameTextBox.Location = new System.Drawing.Point(155, 12);
             this.FullNameTextBox.Name = "FullNameTextBox";
             this.FullNameTextBox.Size = new System.Drawing.Size(313, 27);
@@ -63,6 +65,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AbsenceTypeColumn,
@@ -73,7 +77,7 @@
             this.RemoveButtonColumn});
             this.dataGridView1.Location = new System.Drawing.Point(12, 103);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(644, 455);
+            this.dataGridView1.Size = new System.Drawing.Size(644, 294);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
@@ -143,18 +147,30 @@
             // 
             // EditPersonalDataButton
             // 
-            this.EditPersonalDataButton.Location = new System.Drawing.Point(474, 8);
+            this.EditPersonalDataButton.Location = new System.Drawing.Point(515, 8);
             this.EditPersonalDataButton.Name = "EditPersonalDataButton";
             this.EditPersonalDataButton.Size = new System.Drawing.Size(139, 34);
             this.EditPersonalDataButton.TabIndex = 5;
             this.EditPersonalDataButton.Text = "Edit Personal Data";
             this.EditPersonalDataButton.UseVisualStyleBackColor = true;
+            this.EditPersonalDataButton.Click += new System.EventHandler(this.EditPersonalDataButton_Click);
+            // 
+            // NewAbsenceButton
+            // 
+            this.NewAbsenceButton.Location = new System.Drawing.Point(515, 63);
+            this.NewAbsenceButton.Name = "NewAbsenceButton";
+            this.NewAbsenceButton.Size = new System.Drawing.Size(139, 34);
+            this.NewAbsenceButton.TabIndex = 5;
+            this.NewAbsenceButton.Text = "New Absence";
+            this.NewAbsenceButton.UseVisualStyleBackColor = true;
+            this.NewAbsenceButton.Click += new System.EventHandler(this.EditPersonalDataButton_Click);
             // 
             // AbsenceTrackerDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(666, 570);
+            this.ClientSize = new System.Drawing.Size(666, 409);
+            this.Controls.Add(this.NewAbsenceButton);
             this.Controls.Add(this.EditPersonalDataButton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.DaysOffBalanceTtextBox);
@@ -187,6 +203,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn DetailsButtonColumn;
         private System.Windows.Forms.DataGridViewButtonColumn RemoveButtonColumn;
         private System.Windows.Forms.Button EditPersonalDataButton;
+        private System.Windows.Forms.Button NewAbsenceButton;
     }
 }
 

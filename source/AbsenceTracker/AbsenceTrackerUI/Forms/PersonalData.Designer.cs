@@ -237,6 +237,7 @@
             // 
             // SupervisorsListView
             // 
+            this.SupervisorsListView.Enabled = false;
             this.SupervisorsListView.Location = new System.Drawing.Point(17, 424);
             this.SupervisorsListView.Name = "SupervisorsListView";
             this.SupervisorsListView.Size = new System.Drawing.Size(223, 222);
@@ -255,6 +256,7 @@
             // 
             // SubordinatesListView
             // 
+            this.SubordinatesListView.Enabled = false;
             this.SubordinatesListView.Location = new System.Drawing.Point(246, 424);
             this.SubordinatesListView.Name = "SubordinatesListView";
             this.SubordinatesListView.Size = new System.Drawing.Size(223, 222);
@@ -273,6 +275,7 @@
             // 
             // SubstitutesListView
             // 
+            this.SubstitutesListView.Enabled = false;
             this.SubstitutesListView.Location = new System.Drawing.Point(475, 424);
             this.SubstitutesListView.Name = "SubstitutesListView";
             this.SubstitutesListView.Size = new System.Drawing.Size(223, 222);
