@@ -29,10 +29,12 @@ namespace AbsenceTrackerUI.Forms
 
         private void EditPersonalDataButton_Click(object sender, EventArgs e)
         {
-            using (var personalData = new PersonalData())
-            {
-                personalData.Show();
-            }
+            new PersonalData().Show();
+        }
+
+        private void NewAbsenceButton_Click(object sender, EventArgs e)
+        {
+            new AbsenceDetails().Show();
         }
     }
 }

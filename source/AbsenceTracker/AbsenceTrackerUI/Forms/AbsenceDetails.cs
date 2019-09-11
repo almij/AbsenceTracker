@@ -21,5 +21,16 @@ namespace AbsenceTrackerUI.Forms
         {
 
         }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            //TODO add actual saving on absence details screen
+            Close();
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

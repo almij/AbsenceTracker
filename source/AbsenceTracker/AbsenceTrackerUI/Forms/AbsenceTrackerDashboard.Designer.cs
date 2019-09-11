@@ -157,13 +157,13 @@
             // 
             // NewAbsenceButton
             // 
-            this.NewAbsenceButton.Location = new System.Drawing.Point(515, 63);
+            this.NewAbsenceButton.Location = new System.Drawing.Point(515, 48);
             this.NewAbsenceButton.Name = "NewAbsenceButton";
             this.NewAbsenceButton.Size = new System.Drawing.Size(139, 34);
-            this.NewAbsenceButton.TabIndex = 5;
+            this.NewAbsenceButton.TabIndex = 6;
             this.NewAbsenceButton.Text = "New Absence";
             this.NewAbsenceButton.UseVisualStyleBackColor = true;
-            this.NewAbsenceButton.Click += new System.EventHandler(this.EditPersonalDataButton_Click);
+            this.NewAbsenceButton.Click += new System.EventHandler(this.NewAbsenceButton_Click);
             // 
             // AbsenceTrackerDashboard
             // 
