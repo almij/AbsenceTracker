@@ -7,7 +7,7 @@ namespace AbsenceTrackerLibrary.Interfaces
 {
     public interface IDatabaseConnector
     {
-        void SavePersonalData(ref PersonModel personModel);
-        void SaveAbsence(ref AbsenceModel absenceModel);
+        void SavePerson(PersonModel personModel);
+        void SaveAbsence(AbsenceModel absenceModel);
     }
 }

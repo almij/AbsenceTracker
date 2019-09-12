@@ -36,7 +36,7 @@
             this.ExpiresOnDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.DaysWorkedOnHolidaysLabel = new System.Windows.Forms.Label();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CancelChangesButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -111,15 +111,15 @@
             this.DaysWorkedOnHolidaysLabel.Text = "Days Worked On Holidays";
             this.DaysWorkedOnHolidaysLabel.Click += new System.EventHandler(this.Label1_Click);
             // 
-            // CancelButton
+            // CancelChangesButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(183, 208);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(155, 47);
-            this.CancelButton.TabIndex = 11;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelChangesButton.Location = new System.Drawing.Point(183, 208);
+            this.CancelChangesButton.Name = "CancelChangesButton";
+            this.CancelChangesButton.Size = new System.Drawing.Size(155, 47);
+            this.CancelChangesButton.TabIndex = 11;
+            this.CancelChangesButton.Text = "Cancel";
+            this.CancelChangesButton.UseVisualStyleBackColor = true;
+            this.CancelChangesButton.Click += new System.EventHandler(this.CancelChangesButton_Click);
             // 
             // SaveButton
             // 
@@ -136,7 +136,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(467, 267);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CancelChangesButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.ExpiresOnDateTimePicker);
@@ -165,7 +165,7 @@
         private System.Windows.Forms.DateTimePicker ExpiresOnDateTimePicker;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label DaysWorkedOnHolidaysLabel;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CancelChangesButton;
         private System.Windows.Forms.Button SaveButton;
     }
 }

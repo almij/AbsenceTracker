@@ -58,7 +58,7 @@
             this.EditSubordinatesButton = new System.Windows.Forms.Button();
             this.EditSubstitutesButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CancelChangesButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // UsernameLabel
@@ -319,22 +319,22 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // CancelButton
+            // CancelChangesButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(183, 734);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(155, 47);
-            this.CancelButton.TabIndex = 9;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelChangesButton.Location = new System.Drawing.Point(183, 734);
+            this.CancelChangesButton.Name = "CancelChangesButton";
+            this.CancelChangesButton.Size = new System.Drawing.Size(155, 47);
+            this.CancelChangesButton.TabIndex = 9;
+            this.CancelChangesButton.Text = "Cancel";
+            this.CancelChangesButton.UseVisualStyleBackColor = true;
+            this.CancelChangesButton.Click += new System.EventHandler(this.CancelChangesButton_Click);
             // 
             // PersonalData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(873, 793);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.CancelChangesButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.EditSubstitutesButton);
             this.Controls.Add(this.EditSubordinatesButton);
@@ -407,6 +407,6 @@
         private System.Windows.Forms.Button EditSubordinatesButton;
         private System.Windows.Forms.Button EditSubstitutesButton;
         private System.Windows.Forms.Button SaveButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CancelChangesButton;
     }
 }

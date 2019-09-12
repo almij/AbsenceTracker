@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AbsenceTrackerLibrary;
+using AbsenceTrackerLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,10 +27,11 @@ namespace AbsenceTrackerUI.Forms
         private void SaveButton_Click(object sender, EventArgs e)
         {
             //TODO add actual saving on absence details screen
+            Config.DatabaseConnector.SaveAbsence(new AbsenceModel());
             Close();
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
+        private void CancelChangesButton_Click(object sender, EventArgs e)
         {
             Close();
         }

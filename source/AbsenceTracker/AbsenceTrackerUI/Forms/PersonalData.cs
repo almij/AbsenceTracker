@@ -26,7 +26,7 @@ namespace AbsenceTrackerUI.Forms
             Close();
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
+        private void CancelChangesButton_Click(object sender, EventArgs e)
         {
             Close();
         }

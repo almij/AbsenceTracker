@@ -97,5 +97,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AbsenceTrackerLibrary\AbsenceTrackerLibrary.csproj">
+      <Project>{7DD969D9-93FE-450A-A6A1-DA108EA0414D}</Project>
+      <Name>AbsenceTrackerLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

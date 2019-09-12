@@ -1,4 +1,5 @@
-﻿using AbsenceTrackerUI.Forms;
+﻿using AbsenceTrackerLibrary;
+using AbsenceTrackerUI.Forms;
 using System;
 using System.Windows.Forms;
 
@@ -14,6 +15,7 @@ namespace AbsenceTrackerUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Config.Initialise(Database.Sql, "1");
             Application.Run(new AbsenceTrackerDashboard());
         }
     }
