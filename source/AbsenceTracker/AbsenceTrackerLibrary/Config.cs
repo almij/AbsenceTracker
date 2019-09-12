@@ -1,8 +1,8 @@
 ﻿using AbsenceTrackerLibrary.DatabaseConnectors;
 using AbsenceTrackerLibrary.Interfaces;
 using System;
-using System.Configuration;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Text;
 
 namespace AbsenceTrackerLibrary
@@ -29,6 +29,11 @@ namespace AbsenceTrackerLibrary
                 default:
                     throw new ArgumentException("Invalid argument value", "database");
             }
+        }
+
+        public static string GetConnectionString(string name)
+        {
+            return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
     }
 }

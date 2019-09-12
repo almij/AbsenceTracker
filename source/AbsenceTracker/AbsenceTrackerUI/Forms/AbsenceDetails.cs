@@ -41,11 +41,11 @@ namespace AbsenceTrackerUI.Forms
         {
             var isValid = true;
             var errorMessage = new StringBuilder("Ivalid values on form:");
-            if(AbsenceTypeComboBox.SelectedItem is null)
-            {
-                errorMessage.Append("\nAbsence Type must be populated\n");
-                isValid = false;
-            }
+            //if(AbsenceTypeComboBox.SelectedItem is null)
+            //{
+            //    errorMessage.Append("\nAbsence Type must be populated\n");
+            //    isValid = false;
+            //}
             if(EffectiveFromDateTimePicker.Text is null || ExpiresOnDateTimePicker.Text is null)
             {
                 errorMessage.Append("\nEffective and expiration dates must be populated");
