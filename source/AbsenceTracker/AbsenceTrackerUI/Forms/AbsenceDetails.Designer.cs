@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.AbsenceTypeLabel = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.AbsenceTypeComboBox = new System.Windows.Forms.ComboBox();
             this.EffectiveFromLabel = new System.Windows.Forms.Label();
             this.EffectiveFromDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.ExpiresOnDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.DaysWorkedOnHolidaysTextBox = new System.Windows.Forms.TextBox();
             this.DaysWorkedOnHolidaysLabel = new System.Windows.Forms.Label();
             this.CancelChangesButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
@@ -49,13 +49,13 @@
             this.AbsenceTypeLabel.TabIndex = 0;
             this.AbsenceTypeLabel.Text = "Absence Type";
             // 
-            // comboBox1
+            // AbsenceTypeComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(200, 10);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(195, 28);
-            this.comboBox1.TabIndex = 1;
+            this.AbsenceTypeComboBox.FormattingEnabled = true;
+            this.AbsenceTypeComboBox.Location = new System.Drawing.Point(200, 10);
+            this.AbsenceTypeComboBox.Name = "AbsenceTypeComboBox";
+            this.AbsenceTypeComboBox.Size = new System.Drawing.Size(195, 28);
+            this.AbsenceTypeComboBox.TabIndex = 1;
             // 
             // EffectiveFromLabel
             // 
@@ -93,12 +93,12 @@
             this.ExpiresOnDateTimePicker.Size = new System.Drawing.Size(195, 27);
             this.ExpiresOnDateTimePicker.TabIndex = 3;
             // 
-            // textBox1
+            // DaysWorkedOnHolidaysTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(200, 112);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(195, 27);
-            this.textBox1.TabIndex = 4;
+            this.DaysWorkedOnHolidaysTextBox.Location = new System.Drawing.Point(200, 112);
+            this.DaysWorkedOnHolidaysTextBox.Name = "DaysWorkedOnHolidaysTextBox";
+            this.DaysWorkedOnHolidaysTextBox.Size = new System.Drawing.Size(195, 27);
+            this.DaysWorkedOnHolidaysTextBox.TabIndex = 4;
             // 
             // DaysWorkedOnHolidaysLabel
             // 
@@ -138,13 +138,13 @@
             this.ClientSize = new System.Drawing.Size(467, 267);
             this.Controls.Add(this.CancelChangesButton);
             this.Controls.Add(this.SaveButton);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.DaysWorkedOnHolidaysTextBox);
             this.Controls.Add(this.ExpiresOnDateTimePicker);
             this.Controls.Add(this.DaysWorkedOnHolidaysLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.EffectiveFromDateTimePicker);
             this.Controls.Add(this.EffectiveFromLabel);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.AbsenceTypeComboBox);
             this.Controls.Add(this.AbsenceTypeLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -158,12 +158,12 @@
         #endregion
 
         private System.Windows.Forms.Label AbsenceTypeLabel;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox AbsenceTypeComboBox;
         private System.Windows.Forms.Label EffectiveFromLabel;
         private System.Windows.Forms.DateTimePicker EffectiveFromDateTimePicker;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker ExpiresOnDateTimePicker;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox DaysWorkedOnHolidaysTextBox;
         private System.Windows.Forms.Label DaysWorkedOnHolidaysLabel;
         private System.Windows.Forms.Button CancelChangesButton;
         private System.Windows.Forms.Button SaveButton;

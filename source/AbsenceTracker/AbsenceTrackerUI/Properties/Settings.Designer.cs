@@ -35,12 +35,25 @@ namespace AbsenceTrackerUI.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("sql")]
         public global::AbsenceTrackerLibrary.Database DatabaseConnection {
             get {
                 return ((global::AbsenceTrackerLibrary.Database)(this["DatabaseConnection"]));
+            }
+            set {
+                this["DatabaseConnection"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=localhost;Database=AbsenceTracker;Trusted_Connection=True;")]
+        public string SQLConnectionStringAbsenceTracker {
+            get {
+                return ((string)(this["SQLConnectionStringAbsenceTracker"]));
             }
         }
     }

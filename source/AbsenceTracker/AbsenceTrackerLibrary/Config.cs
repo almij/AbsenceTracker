@@ -1,6 +1,7 @@
 ﻿using AbsenceTrackerLibrary.DatabaseConnectors;
 using AbsenceTrackerLibrary.Interfaces;
 using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Text;
 
