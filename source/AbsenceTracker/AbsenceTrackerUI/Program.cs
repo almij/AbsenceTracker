@@ -15,7 +15,7 @@ namespace AbsenceTrackerUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Config.Initialise(Database.Sql, "1");
+            Config.Initialise(Properties.Settings.Default.DatabaseConnection, "1");
             Application.Run(new AbsenceTrackerDashboard());
         }
     }

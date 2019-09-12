@@ -8,7 +8,8 @@ namespace AbsenceTrackerLibrary
 {
     public enum Database
     {
-        Sql
+        sql,
+        mongo
     }
 
     public static class Config
@@ -19,9 +20,11 @@ namespace AbsenceTrackerLibrary
         {
             switch (database)
             {
-                case Database.Sql:
+                case Database.sql:
                     DatabaseConnector = new SQLConnector();
                     break;
+                case Database.mongo:
+                    throw new ArgumentException($"Invalid argument value: '{database}' connection is not implemented", "database");
                 default:
                     throw new ArgumentException("Invalid argument value", "database");
             }

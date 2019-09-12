@@ -5,7 +5,7 @@
     <Setting Name="DefaultUserId" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="DatabaseConnection" Type="System.String" Scope="User">
+    <Setting Name="DatabaseConnection" Type="AbsenceTrackerLibrary.Database" Scope="Application">
       <Value Profile="(Default)">sql</Value>
     </Setting>
   </Settings>
