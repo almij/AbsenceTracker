@@ -6,16 +6,20 @@ CREATE TABLE dbo.department
 (
     department_id INT NOT NULL IDENTITY,
     department_name NVARCHAR(100) NOT NULL,
+    department_head_id INT, 
 
-    CONSTRAINT pk_department_id PRIMARY KEY (department_id)
+    CONSTRAINT pk_department_id PRIMARY KEY (department_id),
+    CONSTRAINT fk_department_person FOREIGN KEY (department_head_id) REFERENCES Person(person_id)
 );
 
 CREATE TABLE dbo.project
 (
     project_id int NOT NULL IDENTITY,
     project_name nvarchar(100) NOT NULL,
+    project_head_id INT, 
 
-    CONSTRAINT pk_project_id PRIMARY KEY (project_id)
+    CONSTRAINT pk_project_id PRIMARY KEY (project_id),
+    CONSTRAINT fk_project_person FOREIGN KEY (project_head_id) REFERENCES Person(person_id)
 );
 
 CREATE TABLE dbo.person
@@ -35,7 +39,6 @@ CREATE TABLE dbo.person
 
     CONSTRAINT unique_person_username UNIQUE (username),
     CONSTRAINT pk_person_id PRIMARY KEY (person_id),
-    CONSTRAINT fk_person_project FOREIGN KEY (project_id) REFERENCES Project(project_id),
     CONSTRAINT fk_person_department FOREIGN KEY(department_id) REFERENCES department(department_id)
 );
 
@@ -49,7 +52,7 @@ CREATE TABLE dbo.personnel_substitution
     CONSTRAINT pk_substitute_combo PRIMARY KEY (person_id, substitute_person_id)
 );
 
-CREATE TABLE dbo.project_team
+CREATE TABLE dbo.project_personnel
 (
     project_id INT NOT NULL,
     person_id INT NOT NULL,
