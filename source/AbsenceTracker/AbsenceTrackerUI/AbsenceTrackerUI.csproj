@@ -87,7 +87,7 @@
     <Compile Include="Forms\PersonalData.Designer.cs">
       <DependentUpon>PersonalData.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="AbsenceTrackerUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\AbsenceDetails.resx">
       <DependentUpon>AbsenceDetails.cs</DependentUpon>

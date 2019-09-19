@@ -30,19 +30,19 @@
         {
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.AbsencesLabel = new System.Windows.Forms.Label();
-            this.DaysOffBalanceLabel = new System.Windows.Forms.Label();
-            this.DaysOffBalanceTtextBox = new System.Windows.Forms.TextBox();
+            this.AbsencesDataGridView = new System.Windows.Forms.DataGridView();
             this.AbsenceTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EffectiveFromColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExpiresOnColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DaysWorkedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DetailsButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.RemoveButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.AbsencesLabel = new System.Windows.Forms.Label();
+            this.DaysOffBalanceLabel = new System.Windows.Forms.Label();
+            this.DaysOffBalanceTextBox = new System.Windows.Forms.TextBox();
             this.EditPersonalDataButton = new System.Windows.Forms.Button();
             this.NewAbsenceButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AbsencesDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // FullNameTextBox
@@ -63,51 +63,23 @@
             this.FullNameLabel.Text = "Full Name";
             this.FullNameLabel.Click += new System.EventHandler(this.FirstNameLabel_Click);
             // 
-            // dataGridView1
+            // AbsencesDataGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.AbsencesDataGridView.AllowUserToAddRows = false;
+            this.AbsencesDataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.AbsencesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AbsencesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AbsenceTypeColumn,
             this.EffectiveFromColumn,
             this.ExpiresOnColumn,
             this.DaysWorkedColumn,
             this.DetailsButtonColumn,
             this.RemoveButtonColumn});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 103);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(644, 294);
-            this.dataGridView1.TabIndex = 4;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
-            // 
-            // AbsencesLabel
-            // 
-            this.AbsencesLabel.AutoSize = true;
-            this.AbsencesLabel.Location = new System.Drawing.Point(12, 80);
-            this.AbsencesLabel.Name = "AbsencesLabel";
-            this.AbsencesLabel.Size = new System.Drawing.Size(71, 20);
-            this.AbsencesLabel.TabIndex = 2;
-            this.AbsencesLabel.Text = "Absences";
-            this.AbsencesLabel.Click += new System.EventHandler(this.FirstNameLabel_Click);
-            // 
-            // DaysOffBalanceLabel
-            // 
-            this.DaysOffBalanceLabel.AutoSize = true;
-            this.DaysOffBalanceLabel.Location = new System.Drawing.Point(12, 48);
-            this.DaysOffBalanceLabel.Name = "DaysOffBalanceLabel";
-            this.DaysOffBalanceLabel.Size = new System.Drawing.Size(122, 20);
-            this.DaysOffBalanceLabel.TabIndex = 2;
-            this.DaysOffBalanceLabel.Text = "Days Off Balance";
-            this.DaysOffBalanceLabel.Click += new System.EventHandler(this.FirstNameLabel_Click);
-            // 
-            // DaysOffBalanceTtextBox
-            // 
-            this.DaysOffBalanceTtextBox.Enabled = false;
-            this.DaysOffBalanceTtextBox.Location = new System.Drawing.Point(155, 45);
-            this.DaysOffBalanceTtextBox.Name = "DaysOffBalanceTtextBox";
-            this.DaysOffBalanceTtextBox.Size = new System.Drawing.Size(83, 27);
-            this.DaysOffBalanceTtextBox.TabIndex = 3;
+            this.AbsencesDataGridView.Location = new System.Drawing.Point(12, 103);
+            this.AbsencesDataGridView.Name = "AbsencesDataGridView";
+            this.AbsencesDataGridView.Size = new System.Drawing.Size(644, 294);
+            this.AbsencesDataGridView.TabIndex = 4;
+            this.AbsencesDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
             // AbsenceTypeColumn
             // 
@@ -145,6 +117,34 @@
             this.RemoveButtonColumn.HeaderText = "Remove";
             this.RemoveButtonColumn.Name = "RemoveButtonColumn";
             // 
+            // AbsencesLabel
+            // 
+            this.AbsencesLabel.AutoSize = true;
+            this.AbsencesLabel.Location = new System.Drawing.Point(12, 80);
+            this.AbsencesLabel.Name = "AbsencesLabel";
+            this.AbsencesLabel.Size = new System.Drawing.Size(71, 20);
+            this.AbsencesLabel.TabIndex = 2;
+            this.AbsencesLabel.Text = "Absences";
+            this.AbsencesLabel.Click += new System.EventHandler(this.FirstNameLabel_Click);
+            // 
+            // DaysOffBalanceLabel
+            // 
+            this.DaysOffBalanceLabel.AutoSize = true;
+            this.DaysOffBalanceLabel.Location = new System.Drawing.Point(12, 48);
+            this.DaysOffBalanceLabel.Name = "DaysOffBalanceLabel";
+            this.DaysOffBalanceLabel.Size = new System.Drawing.Size(122, 20);
+            this.DaysOffBalanceLabel.TabIndex = 2;
+            this.DaysOffBalanceLabel.Text = "Days Off Balance";
+            this.DaysOffBalanceLabel.Click += new System.EventHandler(this.FirstNameLabel_Click);
+            // 
+            // DaysOffBalanceTextBox
+            // 
+            this.DaysOffBalanceTextBox.Enabled = false;
+            this.DaysOffBalanceTextBox.Location = new System.Drawing.Point(155, 45);
+            this.DaysOffBalanceTextBox.Name = "DaysOffBalanceTextBox";
+            this.DaysOffBalanceTextBox.Size = new System.Drawing.Size(83, 27);
+            this.DaysOffBalanceTextBox.TabIndex = 3;
+            // 
             // EditPersonalDataButton
             // 
             this.EditPersonalDataButton.Location = new System.Drawing.Point(515, 8);
@@ -172,8 +172,8 @@
             this.ClientSize = new System.Drawing.Size(666, 409);
             this.Controls.Add(this.NewAbsenceButton);
             this.Controls.Add(this.EditPersonalDataButton);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.DaysOffBalanceTtextBox);
+            this.Controls.Add(this.AbsencesDataGridView);
+            this.Controls.Add(this.DaysOffBalanceTextBox);
             this.Controls.Add(this.FullNameTextBox);
             this.Controls.Add(this.DaysOffBalanceLabel);
             this.Controls.Add(this.AbsencesLabel);
@@ -182,7 +182,8 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AbsenceTrackerDashboard";
             this.Text = "Absence Tracker Dashboard";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.AbsenceTrackerDashboard_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.AbsencesDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,10 +193,10 @@
 
         private System.Windows.Forms.TextBox FullNameTextBox;
         private System.Windows.Forms.Label FullNameLabel;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView AbsencesDataGridView;
         private System.Windows.Forms.Label AbsencesLabel;
         private System.Windows.Forms.Label DaysOffBalanceLabel;
-        private System.Windows.Forms.TextBox DaysOffBalanceTtextBox;
+        private System.Windows.Forms.TextBox DaysOffBalanceTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn AbsenceTypeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn EffectiveFromColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExpiresOnColumn;

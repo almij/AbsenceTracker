@@ -22,7 +22,7 @@ namespace AbsenceTrackerUI.Forms
         {
             //TODO add actual saving on absence details screen
             if(!ValidateForm()) return;
-            Config.DatabaseConnector.SaveAbsence(new AbsenceModel());
+            Config.Database.SaveAbsence(new AbsenceModel());
             Close();
         }
 

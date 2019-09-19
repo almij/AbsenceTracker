@@ -9,5 +9,6 @@ namespace AbsenceTrackerLibrary.Interfaces
     {
         void SavePerson(PersonModel personModel);
         void SaveAbsence(AbsenceModel absenceModel);
+        PersonModel GetDefaultUser();
     }
 }
