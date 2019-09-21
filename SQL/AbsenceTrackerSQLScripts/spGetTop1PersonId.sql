@@ -10,12 +10,12 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE dbo.spGetTop1PersonId
+CREATE PROCEDURE dbo.spGetPerson_Top1
 AS
 BEGIN
 	SET NOCOUNT ON;
 
-	SELECT TOP 1 person_id
+	SELECT TOP 1 *
 	FROM dbo.person
 END
 GO

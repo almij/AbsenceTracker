@@ -32,7 +32,7 @@ namespace AbsenceTrackerLibrary
             }
         }
 
-        public static string GetConnectionString(string name)
+        internal static string GetConnectionString(string name)
         {
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
