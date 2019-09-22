@@ -1,18 +1,14 @@
 ﻿using AbsenceTrackerLibrary.Models;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AbsenceTrackerUI.Forms
 {
     public partial class AbsenceTrackerDashboard : Form
     {
+        private static readonly BindingList<AbsenceModel> AbsencesBindingList = new BindingList<AbsenceModel>(AbsenceTrackerLibrary.AbsenceTracker.CurrentUser.Absences);
+
         public AbsenceTrackerDashboard()
         {
             InitializeComponent();
@@ -23,37 +19,55 @@ namespace AbsenceTrackerUI.Forms
 
         }
 
-        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void AbsencesDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            var absencesGrid = (DataGridView)sender;
+            var column = absencesGrid.Columns[e.ColumnIndex];
+            var rowIndex = e.RowIndex;
+            if (column is DataGridViewButtonColumn && rowIndex >= 0)
+            {
+                if(column.Name == RemoveButtonColumn.Name)
+                {
+                    AbsenceTrackerLibrary.AbsenceTracker.RemoveAbsence((AbsenceModel)AbsencesBindingList[rowIndex]);
+                    RefreshAbsencesDataGrid();
+                }
+            }
         }
 
         private void EditPersonalDataButton_Click(object sender, EventArgs e)
         {
-            new PersonalData().Show();
+            new PersonalData(this).Show();
         }
 
         private void NewAbsenceButton_Click(object sender, EventArgs e)
         {
-            new AbsenceDetails().Show();
+            new AbsenceDetails(this).Show();
+        }
+
+        private void AbsenceTrackerDashboard_Activated(object sender, EventArgs e)
+        {
+            RefreshAbsencesDataGrid();
+        }
+
+        private void AbsenceTrackerDashboard_Deactivated(object sender, EventArgs e)
+        {
+            Enabled = false;
         }
 
         private void AbsenceTrackerDashboard_Load(object sender, EventArgs e)
         {
-            if(!(AbsenceTrackerUI.CurrentUser is null))
+            if (!(AbsenceTrackerLibrary.AbsenceTracker.CurrentUser is null))
             {
-                FullNameTextBox.AppendText($"{AbsenceTrackerUI.CurrentUser.FirstName} {AbsenceTrackerUI.CurrentUser.LastName}");
-                DaysOffBalanceTextBox.AppendText(AbsenceTrackerUI.CurrentUser.DaysOffBalance.ToString());
-                LoadAbsencesDataGrid(AbsenceTrackerUI.CurrentUser.Absences);
+                FullNameTextBox.AppendText($"{AbsenceTrackerLibrary.AbsenceTracker.CurrentUser.FirstName} {AbsenceTrackerLibrary.AbsenceTracker.CurrentUser.LastName}");
+                DaysOffBalanceTextBox.AppendText(AbsenceTrackerLibrary.AbsenceTracker.CurrentUser.DaysOffBalance.ToString());
+                AbsencesDataGridView.DataSource = AbsencesBindingList;
             }
         }
 
-        private void LoadAbsencesDataGrid(List<AbsenceModel> absences)
+        private void RefreshAbsencesDataGrid()
         {
-            AbsencesDataGridView = null;
-            var bindingList = new BindingList<AbsenceModel>(absences);
-            var source = new BindingSource(bindingList, null);
-            AbsencesDataGridView.DataSource = source;
+            AbsencesDataGridView.DataSource = null;
+            AbsencesDataGridView.DataSource = AbsencesBindingList;
         }
     }
 }

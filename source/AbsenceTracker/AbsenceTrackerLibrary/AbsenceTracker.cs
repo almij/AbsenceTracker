@@ -14,22 +14,42 @@ namespace AbsenceTrackerLibrary
         MongoDB
     }
 
-    public static class Config
+    public static class AbsenceTracker
     {
-        public static IDatabaseConnector Database { get; private set; }
+        private static IDatabaseConnector Database { get; set; }
+        public static PersonModel CurrentUser { get; private set; }
 
-        public static void Initialise(Database database)
+        public static void Initialise(Database database, PersonModel user = null)
         {
             switch (database)
             {
                 case AbsenceTrackerLibrary.Database.Sql:
-                    Database = new SQLConnector();
+                    Database = new SqlConnector();
                     break;
                 case AbsenceTrackerLibrary.Database.MongoDB:
                     throw new ArgumentException($"Invalid argument value: '{database}' connection is not implemented", "database");
                 default:
                     throw new ArgumentException("Invalid argument value", "database");
             }
+            CurrentUser = user ?? Database.GetDefaultUser();
+        }
+
+        public static void Save()
+        {
+            Database.SavePerson(CurrentUser);
+        }
+
+        public static void AddAbsence(AbsenceModel absence)
+        {
+            CurrentUser.Absences.Add(absence);
+            CurrentUser.Absences.Sort();
+            Database.SaveAbsence(absence);
+        }
+
+        public static void RemoveAbsence(AbsenceModel absence)
+        {
+            Database.DeleteAbsence(absence);
+            CurrentUser.Absences.Remove(absence);
         }
 
         internal static string GetConnectionString(string name)

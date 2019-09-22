@@ -1,6 +1,4 @@
-﻿using AbsenceTrackerLibrary;
-using AbsenceTrackerLibrary.Models;
-using AbsenceTrackerUI.Forms;
+﻿using AbsenceTrackerUI.Forms;
 using System;
 using System.Windows.Forms;
 
@@ -8,8 +6,6 @@ namespace AbsenceTrackerUI
 {
     static class AbsenceTrackerUI
     {
-        public static PersonModel CurrentUser;
-
         /// <summary>
         /// The main entry point for the application.
         /// TODO look more into why in UI proj you had to add references at nugets that are already added as dependencies into referenced library
@@ -22,8 +18,7 @@ namespace AbsenceTrackerUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Config.Initialise(Properties.Settings.Default.DatabaseConnection);
-            CurrentUser = Config.Database.GetDefaultUser();
+            AbsenceTrackerLibrary.AbsenceTracker.Initialise(Properties.Settings.Default.DatabaseConnection);
             Application.Run(new AbsenceTrackerDashboard());
         }
     }

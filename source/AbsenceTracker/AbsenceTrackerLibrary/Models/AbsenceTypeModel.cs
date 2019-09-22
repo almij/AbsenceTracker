@@ -1,4 +1,6 @@
-﻿namespace AbsenceTrackerLibrary.Models
+﻿using System;
+
+namespace AbsenceTrackerLibrary.Models
 {
     public class AbsenceTypeModel
     {

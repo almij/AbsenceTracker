@@ -5,9 +5,12 @@ namespace AbsenceTrackerUI.Forms
 {
     public partial class PersonalData : Form
     {
-        public PersonalData()
+        private Form ParentForm { get; set; }
+
+        public PersonalData(Form parentForm)
         {
             InitializeComponent();
+            ParentForm = parentForm;
         }
 
         private void PersonalData_Load(object sender, EventArgs e)
@@ -23,11 +26,17 @@ namespace AbsenceTrackerUI.Forms
         private void SaveButton_Click(object sender, EventArgs e)
         {
             //TODO add actual saving on personal data screen
-            Close();
+            CloseForm();
         }
 
         private void CancelChangesButton_Click(object sender, EventArgs e)
         {
+            CloseForm();
+        }
+
+        private void CloseForm()
+        {
+            ParentForm.Enabled = true;
             Close();
         }
     }

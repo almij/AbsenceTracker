@@ -8,9 +8,12 @@ namespace AbsenceTrackerUI.Forms
 {
     public partial class AbsenceDetails : Form
     {
-        public AbsenceDetails()
+        private Form ParentForm { get; set; }
+
+        public AbsenceDetails(Form parentForm)
         {
             InitializeComponent();
+            ParentForm = parentForm;
         }
 
         private void Label1_Click(object sender, EventArgs e)
@@ -21,14 +24,21 @@ namespace AbsenceTrackerUI.Forms
         private void SaveButton_Click(object sender, EventArgs e)
         {
             //TODO add actual saving on absence details screen
-            if(!ValidateForm()) return;
-            Config.Database.SaveAbsence(new AbsenceModel());
-            Close();
+            if (!ValidateForm()) return;
+            AbsenceTracker.AddAbsence(
+                new AbsenceModel()
+                {
+                    AbsenceType = (AbsenceTypeModel)AbsenceTypeComboBox.SelectedValue,
+                    EffectiveFrom = EffectiveFromDateTimePicker.Value,
+                    ExpiresOn = ExpiresOnDateTimePicker.Value,
+                    DaysWorkedOnHolidays = int.Parse(DaysWorkedOnHolidaysTextBox.Text)
+                });
+            CloseForm();
         }
 
         private void CancelChangesButton_Click(object sender, EventArgs e)
         {
-            Close();
+            CloseForm();
         }
 
         private bool ValidateForm()
@@ -40,7 +50,12 @@ namespace AbsenceTrackerUI.Forms
             //    errorMessage.Append("\nAbsence Type must be populated\n");
             //    isValid = false;
             //}
-            if(EffectiveFromDateTimePicker.Text is null || ExpiresOnDateTimePicker.Text is null)
+            if (!int.TryParse(DaysWorkedOnHolidaysTextBox.Text, out var number))
+            {
+                errorMessage.Append("\nDays worked on holidays must be a number");
+                isValid = false;
+            }
+            if (EffectiveFromDateTimePicker.Text is null || ExpiresOnDateTimePicker.Text is null)
             {
                 errorMessage.Append("\nEffective and expiration dates must be populated");
                 isValid = false;
@@ -55,6 +70,17 @@ namespace AbsenceTrackerUI.Forms
                 MessageBox.Show(errorMessage.ToString(), "Error");
             }
             return isValid;
+        }
+
+        private void AbsenceDetails_Load(object sender, EventArgs e)
+        {
+            DaysWorkedOnHolidaysTextBox.AppendText(0.ToString());
+        }
+
+        private void CloseForm()
+        {
+            ParentForm.Enabled = true;
+            Close();
         }
     }
 }

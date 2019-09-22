@@ -45,16 +45,16 @@
             this.AbsenceTypeLabel.AutoSize = true;
             this.AbsenceTypeLabel.Location = new System.Drawing.Point(13, 13);
             this.AbsenceTypeLabel.Name = "AbsenceTypeLabel";
-            this.AbsenceTypeLabel.Size = new System.Drawing.Size(100, 20);
+            this.AbsenceTypeLabel.Size = new System.Drawing.Size(127, 25);
             this.AbsenceTypeLabel.TabIndex = 0;
             this.AbsenceTypeLabel.Text = "Absence Type";
             // 
             // AbsenceTypeComboBox
             // 
             this.AbsenceTypeComboBox.FormattingEnabled = true;
-            this.AbsenceTypeComboBox.Location = new System.Drawing.Point(200, 10);
+            this.AbsenceTypeComboBox.Location = new System.Drawing.Point(248, 10);
             this.AbsenceTypeComboBox.Name = "AbsenceTypeComboBox";
-            this.AbsenceTypeComboBox.Size = new System.Drawing.Size(195, 28);
+            this.AbsenceTypeComboBox.Size = new System.Drawing.Size(195, 33);
             this.AbsenceTypeComboBox.TabIndex = 1;
             // 
             // EffectiveFromLabel
@@ -62,16 +62,16 @@
             this.EffectiveFromLabel.AutoSize = true;
             this.EffectiveFromLabel.Location = new System.Drawing.Point(13, 50);
             this.EffectiveFromLabel.Name = "EffectiveFromLabel";
-            this.EffectiveFromLabel.Size = new System.Drawing.Size(104, 20);
+            this.EffectiveFromLabel.Size = new System.Drawing.Size(131, 25);
             this.EffectiveFromLabel.TabIndex = 2;
             this.EffectiveFromLabel.Text = "Effective From";
             // 
             // EffectiveFromDateTimePicker
             // 
             this.EffectiveFromDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.EffectiveFromDateTimePicker.Location = new System.Drawing.Point(200, 45);
+            this.EffectiveFromDateTimePicker.Location = new System.Drawing.Point(248, 45);
             this.EffectiveFromDateTimePicker.Name = "EffectiveFromDateTimePicker";
-            this.EffectiveFromDateTimePicker.Size = new System.Drawing.Size(195, 27);
+            this.EffectiveFromDateTimePicker.Size = new System.Drawing.Size(195, 32);
             this.EffectiveFromDateTimePicker.TabIndex = 3;
             // 
             // label1
@@ -80,7 +80,7 @@
             this.label1.Location = new System.Drawing.Point(13, 83);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(79, 20);
+            this.label1.Size = new System.Drawing.Size(102, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "Expires On";
             this.label1.Click += new System.EventHandler(this.Label1_Click);
@@ -88,16 +88,16 @@
             // ExpiresOnDateTimePicker
             // 
             this.ExpiresOnDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.ExpiresOnDateTimePicker.Location = new System.Drawing.Point(200, 78);
+            this.ExpiresOnDateTimePicker.Location = new System.Drawing.Point(248, 78);
             this.ExpiresOnDateTimePicker.Name = "ExpiresOnDateTimePicker";
-            this.ExpiresOnDateTimePicker.Size = new System.Drawing.Size(195, 27);
+            this.ExpiresOnDateTimePicker.Size = new System.Drawing.Size(195, 32);
             this.ExpiresOnDateTimePicker.TabIndex = 3;
             // 
             // DaysWorkedOnHolidaysTextBox
             // 
-            this.DaysWorkedOnHolidaysTextBox.Location = new System.Drawing.Point(200, 112);
+            this.DaysWorkedOnHolidaysTextBox.Location = new System.Drawing.Point(248, 112);
             this.DaysWorkedOnHolidaysTextBox.Name = "DaysWorkedOnHolidaysTextBox";
-            this.DaysWorkedOnHolidaysTextBox.Size = new System.Drawing.Size(195, 27);
+            this.DaysWorkedOnHolidaysTextBox.Size = new System.Drawing.Size(195, 32);
             this.DaysWorkedOnHolidaysTextBox.TabIndex = 4;
             // 
             // DaysWorkedOnHolidaysLabel
@@ -106,7 +106,7 @@
             this.DaysWorkedOnHolidaysLabel.Location = new System.Drawing.Point(13, 115);
             this.DaysWorkedOnHolidaysLabel.Name = "DaysWorkedOnHolidaysLabel";
             this.DaysWorkedOnHolidaysLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.DaysWorkedOnHolidaysLabel.Size = new System.Drawing.Size(181, 20);
+            this.DaysWorkedOnHolidaysLabel.Size = new System.Drawing.Size(229, 25);
             this.DaysWorkedOnHolidaysLabel.TabIndex = 2;
             this.DaysWorkedOnHolidaysLabel.Text = "Days Worked On Holidays";
             this.DaysWorkedOnHolidaysLabel.Click += new System.EventHandler(this.Label1_Click);
@@ -133,7 +133,7 @@
             // 
             // AbsenceDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(467, 267);
             this.Controls.Add(this.CancelChangesButton);
@@ -150,6 +150,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AbsenceDetails";
             this.Text = "Absence Details";
+            this.Load += new System.EventHandler(this.AbsenceDetails_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
