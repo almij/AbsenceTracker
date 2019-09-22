@@ -68,6 +68,14 @@ namespace AbsenceTrackerUI.Forms
 
         private void RefreshForm()
         {
+            if(AbsenceTracker.CurrentUser.Id is null)
+            {
+                NewAbsenceButton.Enabled = false;
+            }
+            else
+            {
+                NewAbsenceButton.Enabled = true;
+            }
             FullNameTextBox.Text = $"{AbsenceTracker.CurrentUser.FirstName} {AbsenceTracker.CurrentUser.LastName}";
             DaysOffBalanceTextBox.Text = AbsenceTracker.CurrentUser.DaysOffBalance.ToString();
             AbsencesDataGridView.DataSource = null;
