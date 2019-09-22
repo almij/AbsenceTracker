@@ -27,13 +27,13 @@ GO
 CREATE TABLE dbo.person
 (
     person_id INT NOT NULL IDENTITY,
-    username NVARCHAR(50) NOT NULL,
-    password_hash BINARY(64) NOT NULL,
-    first_name NVARCHAR(50) NOT NULL,
-    last_name NVARCHAR(100) NOT NULL,
+    username NVARCHAR(50),
+    password_hash BINARY(64),
+    first_name NVARCHAR(50),
+    last_name NVARCHAR(100),
     patronymic NVARCHAR(50),
     middle_name NVARCHAR(50),
-    email NVARCHAR(100) NOT NULL,
+    email NVARCHAR(100),
     full_name_for_documents NVARCHAR(300),
     started_at DATE,
     department_id INT NULL

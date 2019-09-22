@@ -69,7 +69,6 @@ namespace AbsenceTrackerLibrary.DatabaseConnectors
 
         public PersonModel GetDefaultUser()
         {
-            //TODO test implement GetDefaultUser in SQLConnector to replace a stub
             using (IDbConnection connection = SqlConnectionFactory())
             {
                 var personsMapper = connection.Query<PersonMapper>("select top 1 * from person");
@@ -103,7 +102,7 @@ namespace AbsenceTrackerLibrary.DatabaseConnectors
             {
                 var absencesRaw = connection.Query<AbsenceMapper>(
                     $"select * from absence where person_id = '{ personId }'");
-                return absencesRaw.Select(
+                var absences = absencesRaw.Select(
                     _ => new AbsenceModel
                     {
                         Id = _.absence_id.ToString(),
@@ -113,28 +112,39 @@ namespace AbsenceTrackerLibrary.DatabaseConnectors
                         ExpiresOn = _.expires_on,
                         DaysWorkedOnHolidays = _.days_worked_on_holidays
                     }).ToList();
+                absences.Sort();
+                return absences;
             }
         }
 
-        public void SaveAbsence(AbsenceModel absenceModel)
+        public void SaveAbsence(AbsenceModel absence)
         {
-
-            //TODO implement SaveAbsence for SQLConnector
             using (IDbConnection connection = SqlConnectionFactory())
             {
-                if (absenceModel.Id is null)
+                var param = new DynamicParameters();
+                param.Add("@person_id", int.Parse(AbsenceTracker.CurrentUser.Id));
+                param.Add("@absence_type_id", int.Parse(absence.AbsenceType.Id));
+                param.Add("@effective_from", absence.EffectiveFrom);
+                param.Add("@expires_on", absence.ExpiresOn);
+                param.Add("@days_worked_on_holidays", absence.DaysWorkedOnHolidays);
+                if (absence.Id is null)
                 {
-                    absenceModel.Id = AbsenceTracker.CurrentUser.Absences.Count.ToString();
+                    param.Add("@absence_id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    connection.Execute("dbo.spInsertAbsence", param, commandType: CommandType.StoredProcedure);
+                    absence.Id = param.Get<int>("@absence_id").ToString();
+                }
+                else
+                {
+                    param.Add("@absence_id", int.Parse(absence.Id), dbType: DbType.Int32);
+                    connection.Execute("dbo.spUpdateAbsence", param, commandType: CommandType.StoredProcedure);
                 }
             }
         }
 
         public void SavePerson(PersonModel personModel)
         {
-            //TODO implement SavePersonalData for SQLConnector
             using (IDbConnection connection = SqlConnectionFactory())
             {
-                //personModel.Id = 0.ToString();
                 var param = new DynamicParameters();
                 param.Add("@username", AbsenceTracker.CurrentUser.Username);
                 param.Add("@first_name", AbsenceTracker.CurrentUser.FirstName);
@@ -153,6 +163,7 @@ namespace AbsenceTrackerLibrary.DatabaseConnectors
                 else
                 {
                     param.Add("@person_id", int.Parse(AbsenceTracker.CurrentUser.Id), dbType: DbType.Int32);
+                    connection.Execute("dbo.spUpdatePerson", param, commandType: CommandType.StoredProcedure);
                 }
                 return;
             }

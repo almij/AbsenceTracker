@@ -44,12 +44,17 @@ namespace AbsenceTrackerLibrary
 
         public static void SaveAbsence(AbsenceModel absence)
         {
-            if (absence.Id is null)
+            if (absence.AbsenceType.IsOvertime)
+            {
+                absence.DaysWorkedOnHolidays = absence.DaysTotal;
+            }
+            var isNew = absence.Id is null;
+            Database.SaveAbsence(absence);
+            if (isNew)
             {
                 CurrentUser.Absences.Add(absence);
-                CurrentUser.Absences.Sort();
             }
-            Database.SaveAbsence(absence);
+            CurrentUser.Absences.Sort();
         }
 
         public static bool ValidateAbsenceForDublicateDatePeriod(DateTime effectiveFrom, DateTime expiresOn, string id)

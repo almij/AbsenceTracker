@@ -54,11 +54,11 @@ namespace AbsenceTrackerUI.Forms
         {
             var isValid = true;
             var errorMessage = new StringBuilder("Ivalid values on form:");
-            //if(AbsenceTypeComboBox.SelectedItem is null)
-            //{
-            //    errorMessage.Append("\nAbsence Type must be populated\n");
-            //    isValid = false;
-            //}
+            if (AbsenceTypeComboBox.SelectedItem is null)
+            {
+                errorMessage.Append("\nAbsence Type must be populated\n");
+                isValid = false;
+            }
             if (!int.TryParse(DaysWorkedOnHolidaysTextBox.Text, out var number))
             {
                 errorMessage.Append("\nDays worked on holidays must be a number");
@@ -111,10 +111,34 @@ namespace AbsenceTrackerUI.Forms
                 (selectedItem.IsOvertime || selectedItem.IsDayOff))
             {
                 DaysWorkedOnHolidaysTextBox.Visible = false;
+                SingleDayCheckBox.Visible = true;
             }
             else
             {
                 DaysWorkedOnHolidaysTextBox.Visible = true;
+                SingleDayCheckBox.Visible = false;
+            }
+        }
+
+        private void SingleDayCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            var checkBox = (CheckBox)sender;
+            if (checkBox.Checked)
+            {
+                ExpiresOnDateTimePicker.Value = EffectiveFromDateTimePicker.Value;
+                ExpiresOnDateTimePicker.Visible = false;
+            }
+            else
+            {
+                ExpiresOnDateTimePicker.Visible = true;
+            }
+        }
+
+        private void EffectiveFromDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            if (SingleDayCheckBox.Checked)
+            {
+                ExpiresOnDateTimePicker.Value = EffectiveFromDateTimePicker.Value;
             }
         }
     }

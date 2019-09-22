@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace AbsenceTrackerLibrary.Models
 {
@@ -6,6 +7,7 @@ namespace AbsenceTrackerLibrary.Models
     {
         public AbsenceModel()
         {
+            AbsenceType = AbsenceTracker.AbsenceTypes.First();
             DaysWorkedOnHolidays = 0;
             EffectiveFrom = ExpiresOn = DateTime.Today;
         }

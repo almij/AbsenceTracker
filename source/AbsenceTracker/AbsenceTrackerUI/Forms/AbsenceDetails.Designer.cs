@@ -40,6 +40,7 @@
             this.CancelChangesButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.absenceModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.SingleDayCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.absenceModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,6 +80,7 @@
             this.EffectiveFromDateTimePicker.Name = "EffectiveFromDateTimePicker";
             this.EffectiveFromDateTimePicker.Size = new System.Drawing.Size(195, 32);
             this.EffectiveFromDateTimePicker.TabIndex = 3;
+            this.EffectiveFromDateTimePicker.ValueChanged += new System.EventHandler(this.EffectiveFromDateTimePicker_ValueChanged);
             // 
             // label1
             // 
@@ -141,11 +143,24 @@
             // 
             this.absenceModelBindingSource.DataSource = typeof(AbsenceTrackerLibrary.Models.AbsenceModel);
             // 
+            // SingleDayCheckBox
+            // 
+            this.SingleDayCheckBox.AutoSize = true;
+            this.SingleDayCheckBox.Location = new System.Drawing.Point(449, 45);
+            this.SingleDayCheckBox.Name = "SingleDayCheckBox";
+            this.SingleDayCheckBox.Size = new System.Drawing.Size(123, 29);
+            this.SingleDayCheckBox.TabIndex = 12;
+            this.SingleDayCheckBox.Text = "Single Day";
+            this.SingleDayCheckBox.UseVisualStyleBackColor = true;
+            this.SingleDayCheckBox.Visible = false;
+            this.SingleDayCheckBox.CheckedChanged += new System.EventHandler(this.SingleDayCheckBox_CheckedChanged);
+            // 
             // AbsenceDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 267);
+            this.ClientSize = new System.Drawing.Size(581, 267);
+            this.Controls.Add(this.SingleDayCheckBox);
             this.Controls.Add(this.CancelChangesButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.DaysWorkedOnHolidaysTextBox);
@@ -180,5 +195,6 @@
         private System.Windows.Forms.Button CancelChangesButton;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.BindingSource absenceModelBindingSource;
+        private System.Windows.Forms.CheckBox SingleDayCheckBox;
     }
 }
