@@ -26,7 +26,7 @@ GO
 
 CREATE TABLE dbo.person
 (
-    person_id INT NOT NULL,
+    person_id INT NOT NULL IDENTITY,
     username NVARCHAR(50) NOT NULL,
     password_hash BINARY(64) NOT NULL,
     first_name NVARCHAR(50) NOT NULL,

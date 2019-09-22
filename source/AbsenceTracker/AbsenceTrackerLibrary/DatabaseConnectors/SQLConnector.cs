@@ -8,6 +8,7 @@ using System.Linq;
 
 namespace AbsenceTrackerLibrary.DatabaseConnectors
 {
+    //TODO replace all the was Sql with StoredProc calls
     class SqlConnector : IDatabaseConnector
     {
         private struct AbsenceTypeMapper
@@ -32,7 +33,6 @@ namespace AbsenceTrackerLibrary.DatabaseConnectors
         {
             public int person_id;
             public string username;
-            public Byte[] password_hash;
             public string first_name;
             public string last_name;
             public string patronymic;
@@ -40,7 +40,6 @@ namespace AbsenceTrackerLibrary.DatabaseConnectors
             public string email;
             public string full_name_for_documents;
             public DateTime started_at;
-            public int department_id;
         }
 
         public void DeleteAbsence(AbsenceModel absence)
@@ -135,7 +134,26 @@ namespace AbsenceTrackerLibrary.DatabaseConnectors
             //TODO implement SavePersonalData for SQLConnector
             using (IDbConnection connection = SqlConnectionFactory())
             {
-                personModel.Id = 0.ToString();
+                //personModel.Id = 0.ToString();
+                var param = new DynamicParameters();
+                param.Add("@username", AbsenceTracker.CurrentUser.Username);
+                param.Add("@first_name", AbsenceTracker.CurrentUser.FirstName);
+                param.Add("@last_name", AbsenceTracker.CurrentUser.LastName);
+                param.Add("@patronymic", AbsenceTracker.CurrentUser.Patronymic);
+                param.Add("@middle_name", AbsenceTracker.CurrentUser.MiddleName);
+                param.Add("@email", AbsenceTracker.CurrentUser.Email);
+                param.Add("@full_name_for_documents", AbsenceTracker.CurrentUser.FullNameForDocuments);
+                param.Add("@started_at", AbsenceTracker.CurrentUser.StartedAt);
+                if(AbsenceTracker.CurrentUser.Id is null)
+                {
+                    param.Add("@person_id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+                    connection.Execute("dbo.spInsertPerson", param, commandType: CommandType.StoredProcedure);
+                    AbsenceTracker.CurrentUser.Id = param.Get<int>("@person_id").ToString();
+                }
+                else
+                {
+                    param.Add("@person_id", int.Parse(AbsenceTracker.CurrentUser.Id), dbType: DbType.Int32);
+                }
                 return;
             }
         }
