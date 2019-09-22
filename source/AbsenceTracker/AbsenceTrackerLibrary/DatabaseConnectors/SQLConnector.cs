@@ -21,7 +21,7 @@ namespace AbsenceTrackerLibrary.DatabaseConnectors
             {
                 FirstName = "John",
                 LastName = "Doe",
-                Absences = new List<AbsenceModel>() { new AbsenceModel() { AbsenceType = null, EffectiveFrom = DateTime.Today, ExpiresOn = DateTime.Today, DaysWorkedOnHolidays = 0 } }
+                Absences = new List<AbsenceModel>() { new AbsenceModel() { Id = 0.ToString(), AbsenceType = null, EffectiveFrom = DateTime.Today, ExpiresOn = DateTime.Today, DaysWorkedOnHolidays = 0 } }
             };
             return user;
         }
@@ -32,7 +32,10 @@ namespace AbsenceTrackerLibrary.DatabaseConnectors
             //TODO implement SaveAbsence for SQLConnector
             using (IDbConnection connection = SqlConnectionFactory())
             {
-                return;
+                if(absenceModel.Id is null)
+                {
+                    absenceModel.Id = AbsenceTracker.CurrentUser.Absences.Count.ToString();
+                }
             }
         }
 

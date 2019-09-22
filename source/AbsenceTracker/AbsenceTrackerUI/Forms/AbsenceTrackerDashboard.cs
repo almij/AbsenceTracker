@@ -28,8 +28,12 @@ namespace AbsenceTrackerUI.Forms
             {
                 if(column.Name == RemoveButtonColumn.Name)
                 {
-                    AbsenceTrackerLibrary.AbsenceTracker.RemoveAbsence((AbsenceModel)AbsencesBindingList[rowIndex]);
+                    AbsenceTrackerLibrary.AbsenceTracker.RemoveAbsence(AbsencesBindingList[rowIndex]);
                     RefreshAbsencesDataGrid();
+                }
+                else if (column.Name == DetailsButtonColumn.Name)
+                {
+                    new AbsenceDetails(this, AbsencesBindingList[rowIndex]).Show();
                 }
             }
         }

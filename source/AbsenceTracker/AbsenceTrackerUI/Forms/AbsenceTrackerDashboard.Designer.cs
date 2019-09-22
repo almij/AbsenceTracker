@@ -80,10 +80,10 @@
             this.DetailsButtonColumn,
             this.RemoveButtonColumn});
             this.AbsencesDataGridView.DataSource = this.absenceModelBindingSource;
-            this.AbsencesDataGridView.Location = new System.Drawing.Point(12, 103);
+            this.AbsencesDataGridView.Location = new System.Drawing.Point(17, 108);
             this.AbsencesDataGridView.Name = "AbsencesDataGridView";
             this.AbsencesDataGridView.RowHeadersWidth = 51;
-            this.AbsencesDataGridView.Size = new System.Drawing.Size(699, 294);
+            this.AbsencesDataGridView.Size = new System.Drawing.Size(696, 294);
             this.AbsencesDataGridView.TabIndex = 4;
             this.AbsencesDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AbsencesDataGridView_CellContentClick);
             // 
@@ -200,7 +200,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 409);
+            this.ClientSize = new System.Drawing.Size(725, 409);
             this.Controls.Add(this.NewAbsenceButton);
             this.Controls.Add(this.EditPersonalDataButton);
             this.Controls.Add(this.AbsencesDataGridView);
@@ -213,9 +213,9 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AbsenceTrackerDashboard";
             this.Text = "Absence Tracker Dashboard";
-            this.Load += new System.EventHandler(this.AbsenceTrackerDashboard_Load);
             this.Activated += new System.EventHandler(this.AbsenceTrackerDashboard_Activated);
             this.Deactivate += new System.EventHandler(this.AbsenceTrackerDashboard_Deactivated);
+            this.Load += new System.EventHandler(this.AbsenceTrackerDashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.AbsencesDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.absenceModelBindingSource)).EndInit();
             this.ResumeLayout(false);

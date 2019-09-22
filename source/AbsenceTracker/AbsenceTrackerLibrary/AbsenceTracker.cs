@@ -2,6 +2,7 @@
 using AbsenceTrackerLibrary.Interfaces;
 using AbsenceTrackerLibrary.Models;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Text;
@@ -39,10 +40,13 @@ namespace AbsenceTrackerLibrary
             Database.SavePerson(CurrentUser);
         }
 
-        public static void AddAbsence(AbsenceModel absence)
+        public static void SaveAbsence(AbsenceModel absence)
         {
-            CurrentUser.Absences.Add(absence);
-            CurrentUser.Absences.Sort();
+            if (absence.Id is null)
+            {
+                CurrentUser.Absences.Add(absence);
+                CurrentUser.Absences.Sort();
+            }
             Database.SaveAbsence(absence);
         }
 

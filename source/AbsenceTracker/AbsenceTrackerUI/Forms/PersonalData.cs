@@ -5,12 +5,12 @@ namespace AbsenceTrackerUI.Forms
 {
     public partial class PersonalData : Form
     {
-        private Form ParentForm { get; set; }
+        private Form CallerForm { get; set; }
 
         public PersonalData(Form parentForm)
         {
             InitializeComponent();
-            ParentForm = parentForm;
+            CallerForm = parentForm;
         }
 
         private void PersonalData_Load(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace AbsenceTrackerUI.Forms
 
         private void CloseForm()
         {
-            ParentForm.Enabled = true;
+            CallerForm.Enabled = true;
             Close();
         }
     }

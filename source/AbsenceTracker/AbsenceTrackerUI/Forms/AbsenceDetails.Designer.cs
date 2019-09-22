@@ -150,7 +150,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AbsenceDetails";
             this.Text = "Absence Details";
-            this.Load += new System.EventHandler(this.AbsenceDetails_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

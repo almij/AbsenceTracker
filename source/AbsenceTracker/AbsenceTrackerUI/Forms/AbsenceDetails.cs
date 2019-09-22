@@ -8,12 +8,25 @@ namespace AbsenceTrackerUI.Forms
 {
     public partial class AbsenceDetails : Form
     {
-        private Form ParentForm { get; set; }
+        private Form CallerForm { get; set; }
+        private AbsenceModel CurrentAbsence { get; set; }
 
         public AbsenceDetails(Form parentForm)
         {
             InitializeComponent();
-            ParentForm = parentForm;
+            CurrentAbsence = new AbsenceModel();
+            CallerForm = parentForm;
+        }
+
+        public AbsenceDetails(Form parentForm, AbsenceModel absence)
+        {
+            InitializeComponent();
+            CurrentAbsence = absence;
+            CallerForm = parentForm;
+            AbsenceTypeComboBox.SelectedValue = CurrentAbsence.AbsenceType;
+            EffectiveFromDateTimePicker.Value = CurrentAbsence.EffectiveFrom;
+            ExpiresOnDateTimePicker.Value = CurrentAbsence.ExpiresOn;
+            DaysWorkedOnHolidaysTextBox.Text = CurrentAbsence.DaysWorkedOnHolidays.ToString();
         }
 
         private void Label1_Click(object sender, EventArgs e)
@@ -25,14 +38,11 @@ namespace AbsenceTrackerUI.Forms
         {
             //TODO add actual saving on absence details screen
             if (!ValidateForm()) return;
-            AbsenceTracker.AddAbsence(
-                new AbsenceModel()
-                {
-                    AbsenceType = (AbsenceTypeModel)AbsenceTypeComboBox.SelectedValue,
-                    EffectiveFrom = EffectiveFromDateTimePicker.Value,
-                    ExpiresOn = ExpiresOnDateTimePicker.Value,
-                    DaysWorkedOnHolidays = int.Parse(DaysWorkedOnHolidaysTextBox.Text)
-                });
+            CurrentAbsence.AbsenceType = (AbsenceTypeModel)AbsenceTypeComboBox.SelectedValue;
+            CurrentAbsence.EffectiveFrom = EffectiveFromDateTimePicker.Value;
+            CurrentAbsence.ExpiresOn = ExpiresOnDateTimePicker.Value;
+            CurrentAbsence.DaysWorkedOnHolidays = int.Parse(DaysWorkedOnHolidaysTextBox.Text);
+            AbsenceTracker.SaveAbsence(CurrentAbsence);
             CloseForm();
         }
 
@@ -72,14 +82,9 @@ namespace AbsenceTrackerUI.Forms
             return isValid;
         }
 
-        private void AbsenceDetails_Load(object sender, EventArgs e)
-        {
-            DaysWorkedOnHolidaysTextBox.AppendText(0.ToString());
-        }
-
         private void CloseForm()
         {
-            ParentForm.Enabled = true;
+            CallerForm.Enabled = true;
             Close();
         }
     }
