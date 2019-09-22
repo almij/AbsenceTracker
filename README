@@ -2,3 +2,5 @@ An application to track person absences.
 Presumably for a corporate use, can also be used by any type of team or collaboration groups.
 
 MVP: single user with barebones data held
+data stored in Sql
+on onpening gets top 1 from person, if there is none - loads empty form, NewAbsence is unavailable, user will be saved on editing
