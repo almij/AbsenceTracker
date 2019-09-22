@@ -36,8 +36,7 @@ CREATE TABLE dbo.person
     email NVARCHAR(100) NOT NULL,
     full_name_for_documents NVARCHAR(300),
     started_at DATE,
-    department_id INT NULL,
-    days_off_balance INT,
+    department_id INT NULL
 		
     CONSTRAINT unique_person_username UNIQUE (username),
     CONSTRAINT pk_person_id PRIMARY KEY (person_id),
@@ -75,8 +74,11 @@ CREATE TABLE dbo.absence_type
 (
     absence_type_id INT NOT NULL IDENTITY,
     absence_type_name NVARCHAR(100) NOT NULL,
+    is_day_off BIT NOT NULL,
+    is_overtime BIT NOT NULL,
 	
-    CONSTRAINT pk_absence_type_id PRIMARY KEY (absence_type_id)
+    CONSTRAINT pk_absence_type_id PRIMARY KEY (absence_type_id),
+    CONSTRAINT unique_absence_type_name UNIQUE(absence_type_name)
 );
 GO
 

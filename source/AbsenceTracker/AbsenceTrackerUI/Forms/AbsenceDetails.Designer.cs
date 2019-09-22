@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.AbsenceTypeLabel = new System.Windows.Forms.Label();
             this.AbsenceTypeComboBox = new System.Windows.Forms.ComboBox();
             this.EffectiveFromLabel = new System.Windows.Forms.Label();
@@ -38,6 +39,8 @@
             this.DaysWorkedOnHolidaysLabel = new System.Windows.Forms.Label();
             this.CancelChangesButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
+            this.absenceModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.absenceModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // AbsenceTypeLabel
@@ -51,11 +54,14 @@
             // 
             // AbsenceTypeComboBox
             // 
+            this.AbsenceTypeComboBox.DisplayMember = "AbsenceType.Name";
             this.AbsenceTypeComboBox.FormattingEnabled = true;
             this.AbsenceTypeComboBox.Location = new System.Drawing.Point(248, 10);
             this.AbsenceTypeComboBox.Name = "AbsenceTypeComboBox";
             this.AbsenceTypeComboBox.Size = new System.Drawing.Size(195, 33);
             this.AbsenceTypeComboBox.TabIndex = 1;
+            this.AbsenceTypeComboBox.ValueMember = "AbsenceType.Name";
+            this.AbsenceTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.AbsenceTypeComboBox_SelectedIndexChanged);
             // 
             // EffectiveFromLabel
             // 
@@ -131,6 +137,10 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
+            // absenceModelBindingSource
+            // 
+            this.absenceModelBindingSource.DataSource = typeof(AbsenceTrackerLibrary.Models.AbsenceModel);
+            // 
             // AbsenceDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
@@ -150,6 +160,8 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AbsenceDetails";
             this.Text = "Absence Details";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AbsenceDetails_OnClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.absenceModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,5 +179,6 @@
         private System.Windows.Forms.Label DaysWorkedOnHolidaysLabel;
         private System.Windows.Forms.Button CancelChangesButton;
         private System.Windows.Forms.Button SaveButton;
+        private System.Windows.Forms.BindingSource absenceModelBindingSource;
     }
 }

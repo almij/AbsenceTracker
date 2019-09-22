@@ -1,6 +1,7 @@
 ﻿using AbsenceTrackerLibrary;
 using AbsenceTrackerLibrary.Models;
 using System;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -11,22 +12,21 @@ namespace AbsenceTrackerUI.Forms
         private Form CallerForm { get; set; }
         private AbsenceModel CurrentAbsence { get; set; }
 
-        public AbsenceDetails(Form parentForm)
+        public AbsenceDetails(Form callerForm, AbsenceModel absence = null)
         {
             InitializeComponent();
-            CurrentAbsence = new AbsenceModel();
-            CallerForm = parentForm;
-        }
-
-        public AbsenceDetails(Form parentForm, AbsenceModel absence)
-        {
-            InitializeComponent();
-            CurrentAbsence = absence;
-            CallerForm = parentForm;
-            AbsenceTypeComboBox.SelectedValue = CurrentAbsence.AbsenceType;
-            EffectiveFromDateTimePicker.Value = CurrentAbsence.EffectiveFrom;
-            ExpiresOnDateTimePicker.Value = CurrentAbsence.ExpiresOn;
-            DaysWorkedOnHolidaysTextBox.Text = CurrentAbsence.DaysWorkedOnHolidays.ToString();
+            if(absence is null)
+            {
+                CurrentAbsence = new AbsenceModel();
+            }
+            else
+            {
+                CurrentAbsence = absence;
+            }
+            CallerForm = callerForm;
+            CallerForm.Enabled = false;
+            AbsenceTypeComboBox.DataSource = AbsenceTracker.AbsenceTypes;
+            RefreshFormFields();
         }
 
         private void Label1_Click(object sender, EventArgs e)
@@ -36,19 +36,18 @@ namespace AbsenceTrackerUI.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            //TODO add actual saving on absence details screen
             if (!ValidateForm()) return;
-            CurrentAbsence.AbsenceType = (AbsenceTypeModel)AbsenceTypeComboBox.SelectedValue;
+            CurrentAbsence.AbsenceType = (AbsenceTypeModel)AbsenceTypeComboBox.SelectedItem;
             CurrentAbsence.EffectiveFrom = EffectiveFromDateTimePicker.Value;
             CurrentAbsence.ExpiresOn = ExpiresOnDateTimePicker.Value;
             CurrentAbsence.DaysWorkedOnHolidays = int.Parse(DaysWorkedOnHolidaysTextBox.Text);
             AbsenceTracker.SaveAbsence(CurrentAbsence);
-            CloseForm();
+            Close();
         }
 
         private void CancelChangesButton_Click(object sender, EventArgs e)
         {
-            CloseForm();
+            Close();
         }
 
         private bool ValidateForm()
@@ -63,6 +62,14 @@ namespace AbsenceTrackerUI.Forms
             if (!int.TryParse(DaysWorkedOnHolidaysTextBox.Text, out var number))
             {
                 errorMessage.Append("\nDays worked on holidays must be a number");
+                isValid = false;
+            }
+            if (!AbsenceTracker.ValidateAbsenceForDublicateDatePeriod(
+                    EffectiveFromDateTimePicker.Value,
+                    ExpiresOnDateTimePicker.Value,
+                    CurrentAbsence.Id))
+            {
+                errorMessage.Append("\nEffective and expiration dates must be unique in the absence list");
                 isValid = false;
             }
             if (EffectiveFromDateTimePicker.Text is null || ExpiresOnDateTimePicker.Text is null)
@@ -82,10 +89,33 @@ namespace AbsenceTrackerUI.Forms
             return isValid;
         }
 
-        private void CloseForm()
+        private void AbsenceDetails_OnClosing(object sender, EventArgs e)
         {
             CallerForm.Enabled = true;
-            Close();
+        }
+
+        private void RefreshFormFields()
+        {
+            AbsenceTypeComboBox.SelectedItem = CurrentAbsence.AbsenceType;
+            AbsenceTypeComboBox_SelectedIndexChanged(AbsenceTypeComboBox, null);
+            EffectiveFromDateTimePicker.Value = CurrentAbsence.EffectiveFrom;
+            ExpiresOnDateTimePicker.Value = CurrentAbsence.ExpiresOn;
+            DaysWorkedOnHolidaysTextBox.Text = CurrentAbsence.DaysWorkedOnHolidays.ToString();
+        }
+
+        private void AbsenceTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var absenceComboBox = (ComboBox)sender;
+            var selectedItem = (AbsenceTypeModel)absenceComboBox.SelectedItem;
+            if (!(selectedItem is null) &&
+                (selectedItem.IsOvertime || selectedItem.IsDayOff))
+            {
+                DaysWorkedOnHolidaysTextBox.Visible = false;
+            }
+            else
+            {
+                DaysWorkedOnHolidaysTextBox.Visible = true;
+            }
         }
     }
 }

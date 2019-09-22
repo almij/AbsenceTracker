@@ -1,4 +1,6 @@
-﻿namespace AbsenceTrackerUI.Forms
+﻿using AbsenceTrackerLibrary.Models;
+
+namespace AbsenceTrackerUI.Forms
 {
     partial class AbsenceTrackerDashboard
     {
@@ -38,9 +40,11 @@
             this.DaysOffBalanceTextBox = new System.Windows.Forms.TextBox();
             this.EditPersonalDataButton = new System.Windows.Forms.Button();
             this.NewAbsenceButton = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AbsenceTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EffectiveFromColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExpiresOnColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DaysTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DaysWorkedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DetailsButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.RemoveButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -76,6 +80,7 @@
             this.AbsenceTypeColumn,
             this.EffectiveFromColumn,
             this.ExpiresOnColumn,
+            this.DaysTotal,
             this.DaysWorkedColumn,
             this.DetailsButtonColumn,
             this.RemoveButtonColumn});
@@ -83,7 +88,7 @@
             this.AbsencesDataGridView.Location = new System.Drawing.Point(17, 108);
             this.AbsencesDataGridView.Name = "AbsencesDataGridView";
             this.AbsencesDataGridView.RowHeadersWidth = 51;
-            this.AbsencesDataGridView.Size = new System.Drawing.Size(696, 294);
+            this.AbsencesDataGridView.Size = new System.Drawing.Size(821, 294);
             this.AbsencesDataGridView.TabIndex = 4;
             this.AbsencesDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AbsencesDataGridView_CellContentClick);
             // 
@@ -139,6 +144,15 @@
             this.NewAbsenceButton.UseVisualStyleBackColor = true;
             this.NewAbsenceButton.Click += new System.EventHandler(this.NewAbsenceButton_Click);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "AbsenceType";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Type";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
             // AbsenceTypeColumn
             // 
             this.AbsenceTypeColumn.DataPropertyName = "AbsenceType";
@@ -165,6 +179,15 @@
             this.ExpiresOnColumn.Name = "ExpiresOnColumn";
             this.ExpiresOnColumn.ReadOnly = true;
             this.ExpiresOnColumn.Width = 125;
+            // 
+            // DaysTotal
+            // 
+            this.DaysTotal.DataPropertyName = "DaysTotal";
+            this.DaysTotal.HeaderText = "Days Total";
+            this.DaysTotal.MinimumWidth = 6;
+            this.DaysTotal.Name = "DaysTotal";
+            this.DaysTotal.ReadOnly = true;
+            this.DaysTotal.Width = 125;
             // 
             // DaysWorkedColumn
             // 
@@ -200,7 +223,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(725, 409);
+            this.ClientSize = new System.Drawing.Size(876, 409);
             this.Controls.Add(this.NewAbsenceButton);
             this.Controls.Add(this.EditPersonalDataButton);
             this.Controls.Add(this.AbsencesDataGridView);
@@ -234,9 +257,11 @@
         private System.Windows.Forms.Button EditPersonalDataButton;
         private System.Windows.Forms.Button NewAbsenceButton;
         private System.Windows.Forms.BindingSource absenceModelBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn AbsenceTypeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn EffectiveFromColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExpiresOnColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DaysTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn DaysWorkedColumn;
         private System.Windows.Forms.DataGridViewButtonColumn DetailsButtonColumn;
         private System.Windows.Forms.DataGridViewButtonColumn RemoveButtonColumn;

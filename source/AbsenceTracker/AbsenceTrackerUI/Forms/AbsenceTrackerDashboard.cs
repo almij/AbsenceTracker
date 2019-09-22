@@ -1,4 +1,5 @@
-﻿using AbsenceTrackerLibrary.Models;
+﻿using AbsenceTrackerLibrary;
+using AbsenceTrackerLibrary.Models;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -28,8 +29,8 @@ namespace AbsenceTrackerUI.Forms
             {
                 if(column.Name == RemoveButtonColumn.Name)
                 {
-                    AbsenceTrackerLibrary.AbsenceTracker.RemoveAbsence(AbsencesBindingList[rowIndex]);
-                    RefreshAbsencesDataGrid();
+                    AbsenceTracker.RemoveAbsence(AbsencesBindingList[rowIndex]);
+                    RefreshForm();
                 }
                 else if (column.Name == DetailsButtonColumn.Name)
                 {
@@ -50,26 +51,25 @@ namespace AbsenceTrackerUI.Forms
 
         private void AbsenceTrackerDashboard_Activated(object sender, EventArgs e)
         {
-            RefreshAbsencesDataGrid();
+            RefreshForm();
         }
 
         private void AbsenceTrackerDashboard_Deactivated(object sender, EventArgs e)
         {
-            Enabled = false;
         }
 
         private void AbsenceTrackerDashboard_Load(object sender, EventArgs e)
         {
-            if (!(AbsenceTrackerLibrary.AbsenceTracker.CurrentUser is null))
+            if (!(AbsenceTracker.CurrentUser is null))
             {
-                FullNameTextBox.AppendText($"{AbsenceTrackerLibrary.AbsenceTracker.CurrentUser.FirstName} {AbsenceTrackerLibrary.AbsenceTracker.CurrentUser.LastName}");
-                DaysOffBalanceTextBox.AppendText(AbsenceTrackerLibrary.AbsenceTracker.CurrentUser.DaysOffBalance.ToString());
-                AbsencesDataGridView.DataSource = AbsencesBindingList;
+                RefreshForm();
             }
         }
 
-        private void RefreshAbsencesDataGrid()
+        private void RefreshForm()
         {
+            FullNameTextBox.Text = $"{AbsenceTracker.CurrentUser.FirstName} {AbsenceTracker.CurrentUser.LastName}";
+            DaysOffBalanceTextBox.Text = AbsenceTracker.CurrentUser.DaysOffBalance.ToString();
             AbsencesDataGridView.DataSource = null;
             AbsencesDataGridView.DataSource = AbsencesBindingList;
         }

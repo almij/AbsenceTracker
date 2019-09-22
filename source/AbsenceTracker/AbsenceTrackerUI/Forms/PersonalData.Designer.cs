@@ -33,7 +33,7 @@
             this.FirstNameLabel = new System.Windows.Forms.Label();
             this.FirstNameTextBox = new System.Windows.Forms.TextBox();
             this.LastNameLabel = new System.Windows.Forms.Label();
-            this.LastNameTxetBox = new System.Windows.Forms.TextBox();
+            this.LastNameTextBox = new System.Windows.Forms.TextBox();
             this.MiddleNameLabel = new System.Windows.Forms.Label();
             this.MiddleNameTextBox = new System.Windows.Forms.TextBox();
             this.PtronymicLabel = new System.Windows.Forms.Label();
@@ -44,10 +44,6 @@
             this.FullnameForDocumentsTextBox = new System.Windows.Forms.TextBox();
             this.StartedAtLabel = new System.Windows.Forms.Label();
             this.StartedAtDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.DepartmentComboBox = new System.Windows.Forms.ComboBox();
-            this.DepartmentLabel = new System.Windows.Forms.Label();
-            this.ProjectsInvolvedInListView = new System.Windows.Forms.ListView();
-            this.ProjectsInvolvedInLabel = new System.Windows.Forms.Label();
             this.SaveButton = new System.Windows.Forms.Button();
             this.CancelChangesButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -95,10 +91,10 @@
             // 
             // LastNameTxetBox
             // 
-            this.LastNameTxetBox.Location = new System.Drawing.Point(156, 76);
-            this.LastNameTxetBox.Name = "LastNameTxetBox";
-            this.LastNameTxetBox.Size = new System.Drawing.Size(313, 32);
-            this.LastNameTxetBox.TabIndex = 1;
+            this.LastNameTextBox.Location = new System.Drawing.Point(156, 76);
+            this.LastNameTextBox.Name = "LastNameTxetBox";
+            this.LastNameTextBox.Size = new System.Drawing.Size(313, 32);
+            this.LastNameTextBox.TabIndex = 1;
             // 
             // MiddleNameLabel
             // 
@@ -181,42 +177,6 @@
             this.StartedAtDateTimePicker.Size = new System.Drawing.Size(313, 32);
             this.StartedAtDateTimePicker.TabIndex = 3;
             // 
-            // DepartmentComboBox
-            // 
-            this.DepartmentComboBox.FormattingEnabled = true;
-            this.DepartmentComboBox.Location = new System.Drawing.Point(156, 301);
-            this.DepartmentComboBox.Name = "DepartmentComboBox";
-            this.DepartmentComboBox.Size = new System.Drawing.Size(313, 33);
-            this.DepartmentComboBox.TabIndex = 4;
-            // 
-            // DepartmentLabel
-            // 
-            this.DepartmentLabel.AutoSize = true;
-            this.DepartmentLabel.Location = new System.Drawing.Point(13, 304);
-            this.DepartmentLabel.Name = "DepartmentLabel";
-            this.DepartmentLabel.Size = new System.Drawing.Size(112, 25);
-            this.DepartmentLabel.TabIndex = 5;
-            this.DepartmentLabel.Text = "Department";
-            // 
-            // ProjectsInvolvedInListView
-            // 
-            this.ProjectsInvolvedInListView.HideSelection = false;
-            this.ProjectsInvolvedInListView.Location = new System.Drawing.Point(156, 335);
-            this.ProjectsInvolvedInListView.Name = "ProjectsInvolvedInListView";
-            this.ProjectsInvolvedInListView.Size = new System.Drawing.Size(313, 60);
-            this.ProjectsInvolvedInListView.TabIndex = 6;
-            this.ProjectsInvolvedInListView.UseCompatibleStateImageBehavior = false;
-            // 
-            // ProjectsInvolvedInLabel
-            // 
-            this.ProjectsInvolvedInLabel.AutoSize = true;
-            this.ProjectsInvolvedInLabel.Location = new System.Drawing.Point(13, 335);
-            this.ProjectsInvolvedInLabel.Name = "ProjectsInvolvedInLabel";
-            this.ProjectsInvolvedInLabel.Size = new System.Drawing.Size(176, 25);
-            this.ProjectsInvolvedInLabel.TabIndex = 5;
-            this.ProjectsInvolvedInLabel.Text = "Projects Involved In";
-            this.ProjectsInvolvedInLabel.Click += new System.EventHandler(this.ProjectsInvolvedInLabel_Click);
-            // 
             // SaveButton
             // 
             this.SaveButton.Location = new System.Drawing.Point(18, 428);
@@ -244,10 +204,6 @@
             this.ClientSize = new System.Drawing.Size(504, 493);
             this.Controls.Add(this.CancelChangesButton);
             this.Controls.Add(this.SaveButton);
-            this.Controls.Add(this.ProjectsInvolvedInListView);
-            this.Controls.Add(this.ProjectsInvolvedInLabel);
-            this.Controls.Add(this.DepartmentLabel);
-            this.Controls.Add(this.DepartmentComboBox);
             this.Controls.Add(this.StartedAtDateTimePicker);
             this.Controls.Add(this.StartedAtLabel);
             this.Controls.Add(this.FullnameForDocumentsTextBox);
@@ -258,7 +214,7 @@
             this.Controls.Add(this.PtronymicLabel);
             this.Controls.Add(this.MiddleNameTextBox);
             this.Controls.Add(this.MiddleNameLabel);
-            this.Controls.Add(this.LastNameTxetBox);
+            this.Controls.Add(this.LastNameTextBox);
             this.Controls.Add(this.LastNameLabel);
             this.Controls.Add(this.FirstNameTextBox);
             this.Controls.Add(this.FirstNameLabel);
@@ -268,7 +224,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "PersonalData";
             this.Text = "PersonalData";
-            this.Load += new System.EventHandler(this.PersonalData_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PersonalData_OnClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,7 +237,7 @@
         private System.Windows.Forms.Label FirstNameLabel;
         private System.Windows.Forms.TextBox FirstNameTextBox;
         private System.Windows.Forms.Label LastNameLabel;
-        private System.Windows.Forms.TextBox LastNameTxetBox;
+        private System.Windows.Forms.TextBox LastNameTextBox;
         private System.Windows.Forms.Label MiddleNameLabel;
         private System.Windows.Forms.TextBox MiddleNameTextBox;
         private System.Windows.Forms.Label PtronymicLabel;
@@ -292,10 +248,6 @@
         private System.Windows.Forms.TextBox FullnameForDocumentsTextBox;
         private System.Windows.Forms.Label StartedAtLabel;
         private System.Windows.Forms.DateTimePicker StartedAtDateTimePicker;
-        private System.Windows.Forms.ComboBox DepartmentComboBox;
-        private System.Windows.Forms.Label DepartmentLabel;
-        private System.Windows.Forms.ListView ProjectsInvolvedInListView;
-        private System.Windows.Forms.Label ProjectsInvolvedInLabel;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button CancelChangesButton;
     }

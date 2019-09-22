@@ -19,6 +19,7 @@ namespace AbsenceTrackerLibrary
     {
         private static IDatabaseConnector Database { get; set; }
         public static PersonModel CurrentUser { get; private set; }
+        public static List<AbsenceTypeModel> AbsenceTypes { get; internal set; }
 
         public static void Initialise(Database database, PersonModel user = null)
         {
@@ -32,10 +33,11 @@ namespace AbsenceTrackerLibrary
                 default:
                     throw new ArgumentException("Invalid argument value", "database");
             }
+            AbsenceTypes = Database.GetAbsenceTypes();
             CurrentUser = user ?? Database.GetDefaultUser();
         }
 
-        public static void Save()
+        public static void SaveCurrentUser()
         {
             Database.SavePerson(CurrentUser);
         }
@@ -48,6 +50,23 @@ namespace AbsenceTrackerLibrary
                 CurrentUser.Absences.Sort();
             }
             Database.SaveAbsence(absence);
+        }
+
+        public static bool ValidateAbsenceForDublicateDatePeriod(DateTime effectiveFrom, DateTime expiresOn, string id)
+        {
+            var possibleDuplicate = CurrentUser.Absences.SingleOrDefault(_ =>
+            {
+                return _.EffectiveFrom == effectiveFrom &&
+                _.ExpiresOn == expiresOn;
+            });
+            if (possibleDuplicate is default(AbsenceModel))
+            {
+                return true;
+            }
+            else
+            {
+                return id == possibleDuplicate.Id;
+            }
         }
 
         public static void RemoveAbsence(AbsenceModel absence)

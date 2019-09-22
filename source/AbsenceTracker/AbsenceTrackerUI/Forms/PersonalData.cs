@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AbsenceTrackerLibrary;
+using System;
 using System.Windows.Forms;
 
 namespace AbsenceTrackerUI.Forms
@@ -7,15 +8,17 @@ namespace AbsenceTrackerUI.Forms
     {
         private Form CallerForm { get; set; }
 
-        public PersonalData(Form parentForm)
+        public PersonalData(Form callerForm)
         {
             InitializeComponent();
-            CallerForm = parentForm;
+            CallerForm = callerForm;
+            CallerForm.Enabled = false;
+            RefreshForm();
         }
 
-        private void PersonalData_Load(object sender, EventArgs e)
+        private void PersonalData_OnClosing(object sender, EventArgs e)
         {
-
+            CallerForm.Enabled = true;
         }
 
         private void ProjectsInvolvedInLabel_Click(object sender, EventArgs e)
@@ -25,19 +28,34 @@ namespace AbsenceTrackerUI.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            //TODO add actual saving on personal data screen
-            CloseForm();
+            //TODO add validation
+            AbsenceTracker.CurrentUser.Username = UsernameTextBox.Text;
+            AbsenceTracker.CurrentUser.FirstName = FirstNameTextBox.Text;
+            AbsenceTracker.CurrentUser.LastName = LastNameTextBox.Text;
+            AbsenceTracker.CurrentUser.MiddleName = MiddleNameTextBox.Text;
+            AbsenceTracker.CurrentUser.Patronymic = PatronymicTextBox.Text;
+            AbsenceTracker.CurrentUser.Email = EmailTextBox.Text;
+            AbsenceTracker.CurrentUser.FullNameForDocuments = FullnameForDocumentsTextBox.Text;
+            AbsenceTracker.CurrentUser.StartedAt = StartedAtDateTimePicker.Value;
+            AbsenceTracker.SaveCurrentUser();
+            Close();
         }
 
         private void CancelChangesButton_Click(object sender, EventArgs e)
         {
-            CloseForm();
+            Close();
         }
 
-        private void CloseForm()
+        private void RefreshForm()
         {
-            CallerForm.Enabled = true;
-            Close();
+            UsernameTextBox.Text = AbsenceTracker.CurrentUser.Username;
+            FirstNameTextBox.Text = AbsenceTracker.CurrentUser.FirstName;
+            LastNameTextBox.Text = AbsenceTracker.CurrentUser.LastName;
+            MiddleNameTextBox.Text = AbsenceTracker.CurrentUser.MiddleName;
+            PatronymicTextBox.Text = AbsenceTracker.CurrentUser.Patronymic;
+            EmailTextBox.Text = AbsenceTracker.CurrentUser.Email;
+            FullnameForDocumentsTextBox.Text = AbsenceTracker.CurrentUser.FullNameForDocuments;
+            StartedAtDateTimePicker.Value = AbsenceTracker.CurrentUser.StartedAt;
         }
     }
 }
