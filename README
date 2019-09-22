@@ -1,6 +1,10 @@
 An application to track person absences. 
 Presumably for a corporate use, can also be used by any type of team or collaboration groups.
+plans: multiple users, sign in, utilize all planned out data in Sql, sending emails for notifying managers, subordinates etc., 
+notifying user about upcoming holidays, _attempt_ to generate documents for absence submissions 
+more plans: implement different databases and different UIs (WPF, web etc.)
 
 MVP: single user with barebones data held
+practical use - keep track of your days off balance
 data stored in Sql
 on onpening gets top 1 from person, if there is none - loads empty form, NewAbsence is unavailable, user will be saved on editing
