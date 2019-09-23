@@ -15,14 +15,7 @@ namespace AbsenceTrackerUI.Forms
         public AbsenceDetails(Form callerForm, AbsenceModel absence = null)
         {
             InitializeComponent();
-            if(absence is null)
-            {
-                CurrentAbsence = new AbsenceModel();
-            }
-            else
-            {
-                CurrentAbsence = absence;
-            }
+            CurrentAbsence = absence ?? new AbsenceModel();
             CallerForm = callerForm;
             CallerForm.Enabled = false;
             AbsenceTypeComboBox.DataSource = AbsenceTracker.AbsenceTypes;
