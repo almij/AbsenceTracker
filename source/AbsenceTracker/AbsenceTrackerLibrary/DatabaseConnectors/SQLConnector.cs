@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace AbsenceTrackerLibrary.DatabaseConnectors
 {
-    //TODO replace all the was Sql with StoredProc calls
+    //TODO replace all the raw Sql with StoredProc calls
     class SqlConnector : IDatabaseConnector
     {
         //TODO mapping using structs is ugly, Dapper is said to have a mechanism for non-name-to-name mapping, research
