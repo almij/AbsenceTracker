@@ -28,8 +28,7 @@ namespace AbsenceTrackerLibrary.Models
             get
             {
                 var surplus = Absences.Sum(_ => _.DaysWorkedOnHolidays);
-                var deficit = Absences.Where(_ => _.AbsenceType.IsDayOff)
-                    .Sum(_ => (_.ExpiresOn - _.EffectiveFrom).Days + 1);
+                var deficit = Absences.Where(_ => _.AbsenceType.IsDayOff).Sum(_ => _.DaysTotal);
                 return surplus - deficit;
             }
         }
