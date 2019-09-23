@@ -147,23 +147,23 @@ namespace AbsenceTrackerLibrary.DatabaseConnectors
             using (IDbConnection connection = SqlConnectionFactory())
             {
                 var param = new DynamicParameters();
-                param.Add("@username", AbsenceTracker.CurrentUser.Username);
-                param.Add("@first_name", AbsenceTracker.CurrentUser.FirstName);
-                param.Add("@last_name", AbsenceTracker.CurrentUser.LastName);
-                param.Add("@patronymic", AbsenceTracker.CurrentUser.Patronymic);
-                param.Add("@middle_name", AbsenceTracker.CurrentUser.MiddleName);
-                param.Add("@email", AbsenceTracker.CurrentUser.Email);
-                param.Add("@full_name_for_documents", AbsenceTracker.CurrentUser.FullNameForDocuments);
-                param.Add("@started_at", AbsenceTracker.CurrentUser.StartedAt);
-                if(AbsenceTracker.CurrentUser.Id is null)
+                param.Add("@username", personModel.Username);
+                param.Add("@first_name", personModel.FirstName);
+                param.Add("@last_name", personModel.LastName);
+                param.Add("@patronymic", personModel.Patronymic);
+                param.Add("@middle_name", personModel.MiddleName);
+                param.Add("@email", personModel.Email);
+                param.Add("@full_name_for_documents", personModel.FullNameForDocuments);
+                param.Add("@started_at", personModel.StartedAt);
+                if(personModel.Id is null)
                 {
                     param.Add("@person_id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
                     connection.Execute("dbo.spInsertPerson", param, commandType: CommandType.StoredProcedure);
-                    AbsenceTracker.CurrentUser.Id = param.Get<int>("@person_id").ToString();
+                    personModel.Id = param.Get<int>("@person_id").ToString();
                 }
                 else
                 {
-                    param.Add("@person_id", int.Parse(AbsenceTracker.CurrentUser.Id), dbType: DbType.Int32);
+                    param.Add("@person_id", int.Parse(personModel.Id), dbType: DbType.Int32);
                     connection.Execute("dbo.spUpdatePerson", param, commandType: CommandType.StoredProcedure);
                 }
                 return;
