@@ -81,5 +81,10 @@ namespace AbsenceTrackerUI.Forms
             AbsencesDataGridView.DataSource = null;
             AbsencesDataGridView.DataSource = AbsencesBindingList;
         }
+
+        private void LoadUsernameButton_Click(object sender, EventArgs e)
+        {
+            AbsenceTracker.Login(UsernameTextBox.Text, PasswordTextBox.Text);
+        }
     }
 }

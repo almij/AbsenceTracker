@@ -48,7 +48,7 @@ namespace AbsenceTrackerLibrary.DatabaseConnectors
             using (IDbConnection connection = SqlConnectionFactory())
             {
                 connection.Query<AbsenceTypeMapper>(
-                    $"delete absence where absence_id = '{int.Parse(absence.Id)}'");
+                    $"delete from dbo.absence where absence_id = '{int.Parse(absence.Id)}';");
             }
         }
 
@@ -56,7 +56,7 @@ namespace AbsenceTrackerLibrary.DatabaseConnectors
         {
             using (IDbConnection connection = SqlConnectionFactory())
             {
-                var absenceTypesRaw = connection.Query<AbsenceTypeMapper>("select * from absence_type");
+                var absenceTypesRaw = connection.Query<AbsenceTypeMapper>("select * from dbo.absence_type;");
                 return absenceTypesRaw.Select(
                     _ => new AbsenceTypeModel
                     {
@@ -173,6 +173,11 @@ namespace AbsenceTrackerLibrary.DatabaseConnectors
         private System.Data.SqlClient.SqlConnection SqlConnectionFactory()
         {
             return new System.Data.SqlClient.SqlConnection(AbsenceTracker.GetConnectionString("SQLConnectionString"));
+        }
+
+        public PersonModel GetUser(string username, byte[] password = null)
+        {
+            throw new NotImplementedException();
         }
     }
 }

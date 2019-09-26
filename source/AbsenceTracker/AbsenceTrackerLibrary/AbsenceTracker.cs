@@ -6,6 +6,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Text;
+using System.Security;
 
 namespace AbsenceTrackerLibrary
 {
@@ -35,6 +36,14 @@ namespace AbsenceTrackerLibrary
             }
             AbsenceTypes = Database.GetAbsenceTypes();
             CurrentUser = user ?? Database.GetDefaultUser();
+        }
+
+        public static bool Login(string username, string password)
+        {
+            //TODO implement secure hashing solution
+            byte[] passwordHash = null;
+            CurrentUser = Database.GetUser(username, passwordHash);
+            return CurrentUser is null;
         }
 
         public static void SaveCurrentUser()
