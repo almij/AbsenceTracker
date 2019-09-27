@@ -9,4 +9,4 @@ practical use - keep track of your days off balance
 data stored in Sql
 on onpening gets top 1 from person, if there is none - loads empty form, NewAbsence is unavailable, user will be saved on editing
 
-obviously, it's required to manually execute sql scripts starting from CreateTable 
+postgresql is now setup in the cloud
