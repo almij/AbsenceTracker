@@ -29,15 +29,27 @@ namespace AbsenceTrackerUI.Forms
         private void SaveButton_Click(object sender, EventArgs e)
         {
             //TODO add validation
-            AbsenceTracker.CurrentUser.Username = UsernameTextBox.Text;
-            AbsenceTracker.CurrentUser.FirstName = FirstNameTextBox.Text;
-            AbsenceTracker.CurrentUser.LastName = LastNameTextBox.Text;
-            AbsenceTracker.CurrentUser.MiddleName = MiddleNameTextBox.Text;
-            AbsenceTracker.CurrentUser.Patronymic = PatronymicTextBox.Text;
-            AbsenceTracker.CurrentUser.Email = EmailTextBox.Text;
-            AbsenceTracker.CurrentUser.FullNameForDocuments = FullnameForDocumentsTextBox.Text;
-            AbsenceTracker.CurrentUser.StartedAt = StartedAtDateTimePicker.Value;
-            AbsenceTracker.SaveCurrentUser();
+            var newUserData = new AbsenceTrackerLibrary.Models.PersonModel
+            {
+                Id = AbsenceTracker.CurrentUser.Id,
+                Username = UsernameTextBox.Text,
+                FirstName = FirstNameTextBox.Text,
+                LastName = LastNameTextBox.Text,
+                MiddleName = MiddleNameTextBox.Text,
+                Patronymic = PatronymicTextBox.Text,
+                Email = EmailTextBox.Text,
+                FullNameForDocuments = FullnameForDocumentsTextBox.Text,
+                StartedAt = StartedAtDateTimePicker.Value
+            };
+            try
+            {
+                AbsenceTracker.SaveUser(newUserData);
+            }
+            catch (System.Data.ConstraintException exception)
+            {
+                MessageBox.Show(exception.Message);
+                return;
+            }
             Close();
         }
 

@@ -71,13 +71,14 @@ namespace AbsenceTrackerLibrary.DatabaseConnectors
             }
         }
 
-        protected abstract string SelectStarTop1(string table);
+        //TODO evaluate if it's needed protected abstract string SelectStarTop1(string table);
 
-        public PersonModel GetDefaultUser()
+        public PersonModel GetPerson(string username, byte[] password)
         {
+            //TODO implement passwords
             using (IDbConnection connection = ConnectionFactory())
             {
-                var personMappers = connection.Query<PersonMapper>(SelectStarTop1("dbo.person"));
+                var personMappers = connection.Query<PersonMapper>($"select * from dbo.person where username = '{username}'");
                 if (personMappers.Count() == 0)
                 {
                     return new PersonModel();
@@ -160,26 +161,31 @@ namespace AbsenceTrackerLibrary.DatabaseConnectors
                 param.Add($"{ParamChar}email", personModel.Email);
                 param.Add($"{ParamChar}full_name_for_documents", personModel.FullNameForDocuments);
                 param.Add($"{ParamChar}started_at", personModel.StartedAt);
-                if(personModel.Id is null)
+                try
                 {
-                    param.Add($"{ParamChar}person_id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
-                    connection.Execute("dbo.sp_insert_person", param, commandType: CommandType.StoredProcedure);
-                    personModel.Id = param.Get<int>($"{ParamChar}person_id").ToString();
+                    if (personModel.Id is null)
+                    {
+                        param.Add($"{ParamChar}person_id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+                        connection.Execute("dbo.sp_insert_person", param, commandType: CommandType.StoredProcedure);
+                        personModel.Id = param.Get<int>($"{ParamChar}person_id").ToString();
+                    }
+                    else
+                    {
+                        param.Add($"{ParamChar}person_id", int.Parse(personModel.Id), dbType: DbType.Int32);
+                        connection.Execute("dbo.sp_update_person", param, commandType: CommandType.StoredProcedure);
+                    }
                 }
-                else
+                catch (Npgsql.PostgresException exception)
                 {
-                    param.Add($"{ParamChar}person_id", int.Parse(personModel.Id), dbType: DbType.Int32);
-                    connection.Execute("dbo.sp_update_person", param, commandType: CommandType.StoredProcedure);
+                    if(exception.SqlState == "23505" && exception.ConstraintName == "unique_person_username")
+                    {
+                        throw new ConstraintException("This username is not available", exception);
+                    }
                 }
                 return;
             }
         }
 
         protected abstract IDbConnection ConnectionFactory();
-
-        public PersonModel GetUser(string username, byte[] password = null)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

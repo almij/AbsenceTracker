@@ -8,7 +8,7 @@ namespace AbsenceTrackerUI.Forms
 {
     public partial class AbsenceTrackerDashboard : Form
     {
-        private static readonly BindingList<AbsenceModel> AbsencesBindingList = new BindingList<AbsenceModel>(AbsenceTrackerLibrary.AbsenceTracker.CurrentUser.Absences);
+        private static BindingList<AbsenceModel> AbsencesBindingList = new BindingList<AbsenceModel>(AbsenceTracker.CurrentUser.Absences);
 
         public AbsenceTrackerDashboard()
         {
@@ -39,7 +39,7 @@ namespace AbsenceTrackerUI.Forms
             }
         }
 
-        private void EditPersonalDataButton_Click(object sender, EventArgs e)
+        private void EditUserButton_Click(object sender, EventArgs e)
         {
             new PersonalData(this).Show();
         }
@@ -71,20 +71,28 @@ namespace AbsenceTrackerUI.Forms
             if(AbsenceTracker.CurrentUser.Id is null)
             {
                 NewAbsenceButton.Enabled = false;
+                EditUserButton.Text = "Create user";
             }
             else
             {
                 NewAbsenceButton.Enabled = true;
+                EditUserButton.Text = "Edit user";
             }
+            UsernameTextBox.Text = AbsenceTracker.CurrentUser.Username;
             FullNameTextBox.Text = $"{AbsenceTracker.CurrentUser.FirstName} {AbsenceTracker.CurrentUser.LastName}";
             DaysOffBalanceTextBox.Text = AbsenceTracker.CurrentUser.DaysOffBalance.ToString();
             AbsencesDataGridView.DataSource = null;
             AbsencesDataGridView.DataSource = AbsencesBindingList;
         }
 
-        private void LoadUsernameButton_Click(object sender, EventArgs e)
+        private void LoginButton_Click(object sender, EventArgs e)
         {
-            AbsenceTracker.Login(UsernameTextBox.Text, PasswordTextBox.Text);
+            if(!AbsenceTracker.Login(UsernameTextBox.Text, PasswordTextBox.Text))
+            {
+                MessageBox.Show("User not found");
+            }
+            AbsencesBindingList = new BindingList<AbsenceModel>(AbsenceTracker.CurrentUser.Absences);
+            RefreshForm();
         }
     }
 }

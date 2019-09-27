@@ -8,11 +8,11 @@ namespace AbsenceTrackerLibrary.DatabaseConnectors
     {
         protected override string ParamChar => "_";
 
-        protected override string SelectStarTop1(string table) => $"select * from {table} fetch first 1 rows only";
+        //TODO evaluate if it's needed protected override string SelectStarTop1(string table) => $"select * from {table} fetch first 1 rows only";
 
         protected override IDbConnection ConnectionFactory()
         {
-            return new NpgsqlConnection(AbsenceTracker.GetConnectionString("PostgreSQLConnectionString"));
+            return new NpgsqlConnection(AbsenceTracker.GetConnectionString("PostgreSQLHerokuConnectionString"));
         }
     }
 }

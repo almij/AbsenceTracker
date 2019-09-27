@@ -23,7 +23,7 @@ namespace AbsenceTrackerLibrary
         public static PersonModel CurrentUser { get; private set; }
         public static List<AbsenceTypeModel> AbsenceTypes { get; internal set; }
 
-        public static void Initialise(Database database, PersonModel user = null)
+        public static void Initialise(Database database)
         {
             switch (database)
             {
@@ -39,20 +39,21 @@ namespace AbsenceTrackerLibrary
                     throw new ArgumentException("Invalid argument value", "database");
             }
             AbsenceTypes = Database.GetAbsenceTypes();
-            CurrentUser = user ?? Database.GetDefaultUser();
+            CurrentUser = new PersonModel();
         }
 
         public static bool Login(string username, string password)
         {
             //TODO implement secure hashing solution
             byte[] passwordHash = null;
-            CurrentUser = Database.GetUser(username, passwordHash);
-            return CurrentUser is null;
+            CurrentUser = Database.GetPerson(username, passwordHash);
+            return !(CurrentUser is default(PersonModel));
         }
 
-        public static void SaveCurrentUser()
+        public static void SaveUser(PersonModel person)
         {
-            Database.SavePerson(CurrentUser);
+            Database.SavePerson(person);
+            CurrentUser = person;
         }
 
         public static void SaveAbsence(AbsenceModel absence)

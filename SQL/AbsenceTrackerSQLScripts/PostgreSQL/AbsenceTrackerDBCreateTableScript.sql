@@ -27,7 +27,7 @@ CREATE TABLE dbo.project
 CREATE TABLE dbo.person
 (
     person_id INT GENERATED ALWAYS AS IDENTITY,
-    username VARCHAR(50) CONSTRAINT unique_person_username UNIQUE,
+    username VARCHAR(50) NOT NULL CONSTRAINT unique_person_username UNIQUE,
     password_hash BYTEA,
     first_name VARCHAR(50),
     last_name VARCHAR(100),

@@ -8,7 +8,7 @@ namespace AbsenceTrackerLibrary.DatabaseConnectors
     {
         protected override string ParamChar => "@";
 
-        protected override string SelectStarTop1(string table) => $"select top 1 * from {table}";
+        //TODO evaluate if it's needed protected override string SelectStarTop1(string table) => $"select top 1 * from {table}";
 
         protected override IDbConnection ConnectionFactory()
         {
