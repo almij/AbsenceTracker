@@ -9,7 +9,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE dbo.spInsertPerson
+CREATE PROCEDURE dbo.sp_insert_person
     @username NVARCHAR(50),
     @first_name NVARCHAR(50),
     @last_name NVARCHAR(100),

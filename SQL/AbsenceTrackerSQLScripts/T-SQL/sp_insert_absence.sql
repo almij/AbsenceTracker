@@ -9,7 +9,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE dbo.spInsertAbsence
+CREATE PROCEDURE dbo.sp_insert_absence
     @person_id INT,
     @absence_type_id INT,
     @effective_from DATE,
