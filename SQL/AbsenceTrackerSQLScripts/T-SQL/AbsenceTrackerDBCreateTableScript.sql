@@ -1,7 +1,7 @@
 --USE master;
 --DROP DATABASE AbsenceTracker;
---CREATE DATABASE AbsenceTracker;
-
+CREATE DATABASE AbsenceTracker;
+GO
 USE AbsenceTracker;
 
 CREATE TABLE dbo.department

@@ -1,4 +1,6 @@
-insert into absence_type 
+use AbsenceTracker
+
+insert into dbo.absence_type 
 (absence_type_name, is_day_off, is_overtime)
 values
 ('Day off', 1, 0),
