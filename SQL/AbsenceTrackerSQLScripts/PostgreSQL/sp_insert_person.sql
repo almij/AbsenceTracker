@@ -3,15 +3,15 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE OR REPLACE PROCEDURE dbo.sp_insert_person (
-    _username VARCHAR(50),
-    _first_name VARCHAR(50),
-    _last_name VARCHAR(100),
-    _patronymic VARCHAR(50),
-    _middle_name VARCHAR(50),
-    _email VARCHAR(100),
-    _full_name_for_documents VARCHAR(300),
-    _started_at DATE,
+CREATE OR REPLACE FUNCTION dbo.sp_insert_person (
+    _username text,
+    _first_name text,
+    _last_name text,
+    _patronymic text,
+    _middle_name text,
+    _email text,
+    _full_name_for_documents text,
+    _started_at timestamp without time zone,
     INOUT _person_id INT = 0
     )
 AS

@@ -3,11 +3,11 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE OR REPLACE PROCEDURE dbo.sp_insert_absence (
+CREATE OR REPLACE FUNCTION dbo.sp_insert_absence (
     _person_id INT,
     _absence_type_id INT,
-    _effective_from DATE,
-    _expires_on DATE,
+    _effective_from timestamp without time zone,
+    _expires_on timestamp without time zone,
     _days_worked_on_holidays INT,
     INOUT _absence_id INT = 0
     )
