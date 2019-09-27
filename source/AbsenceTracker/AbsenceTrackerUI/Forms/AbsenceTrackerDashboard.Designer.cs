@@ -34,34 +34,34 @@ namespace AbsenceTrackerUI.Forms
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.AbsencesDataGridView = new System.Windows.Forms.DataGridView();
-            this.AbsenceTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EffectiveFromColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExpiresOnColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DaysTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DaysWorkedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DetailsButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.RemoveButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.absenceModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AbsencesLabel = new System.Windows.Forms.Label();
             this.DaysOffBalanceLabel = new System.Windows.Forms.Label();
             this.DaysOffBalanceTextBox = new System.Windows.Forms.TextBox();
             this.EditPersonalDataButton = new System.Windows.Forms.Button();
             this.NewAbsenceButton = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.absenceTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.effectiveFromDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expiresOnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.daysWorkedOnHolidaysDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UsernameLabel = new System.Windows.Forms.Label();
             this.UsernameTextBox = new System.Windows.Forms.TextBox();
             this.LoginButton = new System.Windows.Forms.Button();
             this.LoginGroupBox = new System.Windows.Forms.GroupBox();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
+            this.AbsenceTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.absenceTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.effectiveFromDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expiresOnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.daysWorkedOnHolidaysDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.absenceModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.AbsencesDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.absenceModelBindingSource)).BeginInit();
             this.LoginGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.absenceModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // FullNameTextBox
@@ -108,15 +108,6 @@ namespace AbsenceTrackerUI.Forms
             this.AbsencesDataGridView.Size = new System.Drawing.Size(821, 294);
             this.AbsencesDataGridView.TabIndex = 4;
             this.AbsencesDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AbsencesDataGridView_CellContentClick);
-            // 
-            // AbsenceTypeColumn
-            // 
-            this.AbsenceTypeColumn.DataPropertyName = "AbsenceType";
-            this.AbsenceTypeColumn.HeaderText = "Type";
-            this.AbsenceTypeColumn.MinimumWidth = 6;
-            this.AbsenceTypeColumn.Name = "AbsenceTypeColumn";
-            this.AbsenceTypeColumn.ReadOnly = true;
-            this.AbsenceTypeColumn.Width = 125;
             // 
             // EffectiveFromColumn
             // 
@@ -175,10 +166,6 @@ namespace AbsenceTrackerUI.Forms
             this.RemoveButtonColumn.UseColumnTextForButtonValue = true;
             this.RemoveButtonColumn.Width = 70;
             // 
-            // absenceModelBindingSource
-            // 
-            this.absenceModelBindingSource.DataSource = typeof(AbsenceTrackerLibrary.Models.AbsenceModel);
-            // 
             // AbsencesLabel
             // 
             this.AbsencesLabel.AutoSize = true;
@@ -236,36 +223,6 @@ namespace AbsenceTrackerUI.Forms
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Width = 125;
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // absenceTypeDataGridViewTextBoxColumn
-            // 
-            this.absenceTypeDataGridViewTextBoxColumn.DataPropertyName = "AbsenceType";
-            this.absenceTypeDataGridViewTextBoxColumn.HeaderText = "AbsenceType";
-            this.absenceTypeDataGridViewTextBoxColumn.Name = "absenceTypeDataGridViewTextBoxColumn";
-            // 
-            // effectiveFromDataGridViewTextBoxColumn
-            // 
-            this.effectiveFromDataGridViewTextBoxColumn.DataPropertyName = "EffectiveFrom";
-            this.effectiveFromDataGridViewTextBoxColumn.HeaderText = "EffectiveFrom";
-            this.effectiveFromDataGridViewTextBoxColumn.Name = "effectiveFromDataGridViewTextBoxColumn";
-            // 
-            // expiresOnDataGridViewTextBoxColumn
-            // 
-            this.expiresOnDataGridViewTextBoxColumn.DataPropertyName = "ExpiresOn";
-            this.expiresOnDataGridViewTextBoxColumn.HeaderText = "ExpiresOn";
-            this.expiresOnDataGridViewTextBoxColumn.Name = "expiresOnDataGridViewTextBoxColumn";
-            // 
-            // daysWorkedOnHolidaysDataGridViewTextBoxColumn
-            // 
-            this.daysWorkedOnHolidaysDataGridViewTextBoxColumn.DataPropertyName = "DaysWorkedOnHolidays";
-            this.daysWorkedOnHolidaysDataGridViewTextBoxColumn.HeaderText = "DaysWorkedOnHolidays";
-            this.daysWorkedOnHolidaysDataGridViewTextBoxColumn.Name = "daysWorkedOnHolidaysDataGridViewTextBoxColumn";
-            // 
             // UsernameLabel
             // 
             this.UsernameLabel.AutoSize = true;
@@ -319,8 +276,52 @@ namespace AbsenceTrackerUI.Forms
             // 
             this.PasswordTextBox.Location = new System.Drawing.Point(106, 63);
             this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.PasswordChar = '*';
             this.PasswordTextBox.Size = new System.Drawing.Size(242, 27);
             this.PasswordTextBox.TabIndex = 11;
+            // 
+            // AbsenceTypeColumn
+            // 
+            this.AbsenceTypeColumn.DataPropertyName = "AbsenceType";
+            this.AbsenceTypeColumn.HeaderText = "Type";
+            this.AbsenceTypeColumn.MinimumWidth = 6;
+            this.AbsenceTypeColumn.Name = "AbsenceTypeColumn";
+            this.AbsenceTypeColumn.ReadOnly = true;
+            this.AbsenceTypeColumn.Width = 125;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // absenceTypeDataGridViewTextBoxColumn
+            // 
+            this.absenceTypeDataGridViewTextBoxColumn.DataPropertyName = "AbsenceType";
+            this.absenceTypeDataGridViewTextBoxColumn.HeaderText = "AbsenceType";
+            this.absenceTypeDataGridViewTextBoxColumn.Name = "absenceTypeDataGridViewTextBoxColumn";
+            // 
+            // effectiveFromDataGridViewTextBoxColumn
+            // 
+            this.effectiveFromDataGridViewTextBoxColumn.DataPropertyName = "EffectiveFrom";
+            this.effectiveFromDataGridViewTextBoxColumn.HeaderText = "EffectiveFrom";
+            this.effectiveFromDataGridViewTextBoxColumn.Name = "effectiveFromDataGridViewTextBoxColumn";
+            // 
+            // expiresOnDataGridViewTextBoxColumn
+            // 
+            this.expiresOnDataGridViewTextBoxColumn.DataPropertyName = "ExpiresOn";
+            this.expiresOnDataGridViewTextBoxColumn.HeaderText = "ExpiresOn";
+            this.expiresOnDataGridViewTextBoxColumn.Name = "expiresOnDataGridViewTextBoxColumn";
+            // 
+            // daysWorkedOnHolidaysDataGridViewTextBoxColumn
+            // 
+            this.daysWorkedOnHolidaysDataGridViewTextBoxColumn.DataPropertyName = "DaysWorkedOnHolidays";
+            this.daysWorkedOnHolidaysDataGridViewTextBoxColumn.HeaderText = "DaysWorkedOnHolidays";
+            this.daysWorkedOnHolidaysDataGridViewTextBoxColumn.Name = "daysWorkedOnHolidaysDataGridViewTextBoxColumn";
+            // 
+            // absenceModelBindingSource
+            // 
+            this.absenceModelBindingSource.DataSource = typeof(AbsenceTrackerLibrary.Models.AbsenceModel);
             // 
             // AbsenceTrackerDashboard
             // 
@@ -344,9 +345,9 @@ namespace AbsenceTrackerUI.Forms
             this.Deactivate += new System.EventHandler(this.AbsenceTrackerDashboard_Deactivated);
             this.Load += new System.EventHandler(this.AbsenceTrackerDashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.AbsencesDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.absenceModelBindingSource)).EndInit();
             this.LoginGroupBox.ResumeLayout(false);
             this.LoginGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.absenceModelBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -6,7 +6,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="DatabaseConnection" Type="AbsenceTrackerLibrary.Database" Scope="User">
-      <Value Profile="(Default)">sql</Value>
+      <Value Profile="(Default)">PostgreSQL</Value>
     </Setting>
   </Settings>
 </SettingsFile>

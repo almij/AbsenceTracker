@@ -12,7 +12,8 @@ namespace AbsenceTrackerLibrary
 {
     public enum Database
     {
-        Sql,
+        MSSQLServer,
+        PostgreSQL,
         MongoDB
     }
 
@@ -26,11 +27,14 @@ namespace AbsenceTrackerLibrary
         {
             switch (database)
             {
-                case AbsenceTrackerLibrary.Database.Sql:
-                    Database = new SqlConnector();
+                case AbsenceTrackerLibrary.Database.MSSQLServer:
+                    Database = new MSSQLServerConnector();
                     break;
                 case AbsenceTrackerLibrary.Database.MongoDB:
                     throw new ArgumentException($"Invalid argument value: '{database}' connection is not implemented", "database");
+                case AbsenceTrackerLibrary.Database.PostgreSQL:
+                    Database = new PostgreSQLConnector();
+                    break;
                 default:
                     throw new ArgumentException("Invalid argument value", "database");
             }

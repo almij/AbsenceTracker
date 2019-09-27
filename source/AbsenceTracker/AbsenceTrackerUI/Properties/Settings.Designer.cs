@@ -37,7 +37,7 @@ namespace AbsenceTrackerUI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("sql")]
+        [global::System.Configuration.DefaultSettingValueAttribute("PostgreSQL")]
         public global::AbsenceTrackerLibrary.Database DatabaseConnection {
             get {
                 return ((global::AbsenceTrackerLibrary.Database)(this["DatabaseConnection"]));
