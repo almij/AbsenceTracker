@@ -15,11 +15,6 @@ namespace AbsenceTrackerUI.Forms
             InitializeComponent();
         }
 
-        private void FirstNameLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AbsencesDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var absencesGrid = (DataGridView)sender;
@@ -54,10 +49,6 @@ namespace AbsenceTrackerUI.Forms
             RefreshForm();
         }
 
-        private void AbsenceTrackerDashboard_Deactivated(object sender, EventArgs e)
-        {
-        }
-
         private void AbsenceTrackerDashboard_Load(object sender, EventArgs e)
         {
             if (!(AbsenceTracker.CurrentUser is null))
@@ -83,6 +74,8 @@ namespace AbsenceTrackerUI.Forms
             DaysOffBalanceTextBox.Text = AbsenceTracker.CurrentUser.DaysOffBalance.ToString();
             AbsencesDataGridView.DataSource = null;
             AbsencesDataGridView.DataSource = AbsencesBindingList;
+            AbsencesDataGridView.Refresh();
+
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
@@ -92,6 +85,7 @@ namespace AbsenceTrackerUI.Forms
                 MessageBox.Show("User not found");
             }
             AbsencesBindingList = new BindingList<AbsenceModel>(AbsenceTracker.CurrentUser.Absences);
+            AbsencesDataGridView.DataSource = AbsencesBindingList; ;
             RefreshForm();
         }
     }

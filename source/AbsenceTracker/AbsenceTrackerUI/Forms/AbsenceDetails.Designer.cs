@@ -91,7 +91,6 @@
             this.label1.Size = new System.Drawing.Size(102, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "Expires On";
-            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // ExpiresOnDateTimePicker
             // 
@@ -117,7 +116,6 @@
             this.DaysWorkedOnHolidaysLabel.Size = new System.Drawing.Size(229, 25);
             this.DaysWorkedOnHolidaysLabel.TabIndex = 2;
             this.DaysWorkedOnHolidaysLabel.Text = "Days Worked On Holidays";
-            this.DaysWorkedOnHolidaysLabel.Click += new System.EventHandler(this.Label1_Click);
             // 
             // CancelChangesButton
             // 

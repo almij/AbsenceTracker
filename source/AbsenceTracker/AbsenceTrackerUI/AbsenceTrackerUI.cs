@@ -18,7 +18,8 @@ namespace AbsenceTrackerUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            AbsenceTrackerLibrary.AbsenceTracker.Initialise(Properties.Settings.Default.DatabaseConnection);
+            //AbsenceTrackerLibrary.AbsenceTracker.Initialise(Properties.Settings.Default.DatabaseConnection);
+            AbsenceTrackerLibrary.AbsenceTracker.Initialise(AbsenceTrackerLibrary.Database.PostgreSQL);
             Application.Run(new AbsenceTrackerDashboard());
         }
     }

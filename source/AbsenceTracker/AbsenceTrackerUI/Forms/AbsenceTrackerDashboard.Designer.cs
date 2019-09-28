@@ -77,7 +77,6 @@ namespace AbsenceTrackerUI.Forms
             this.FullNameLabel.Size = new System.Drawing.Size(97, 25);
             this.FullNameLabel.TabIndex = 2;
             this.FullNameLabel.Text = "Full Name";
-            this.FullNameLabel.Click += new System.EventHandler(this.FirstNameLabel_Click);
             // 
             // AbsencesDataGridView
             // 
@@ -113,7 +112,6 @@ namespace AbsenceTrackerUI.Forms
             this.AbsencesLabel.Size = new System.Drawing.Size(91, 25);
             this.AbsencesLabel.TabIndex = 2;
             this.AbsencesLabel.Text = "Absences";
-            this.AbsencesLabel.Click += new System.EventHandler(this.FirstNameLabel_Click);
             // 
             // DaysOffBalanceLabel
             // 
@@ -123,7 +121,6 @@ namespace AbsenceTrackerUI.Forms
             this.DaysOffBalanceLabel.Size = new System.Drawing.Size(154, 25);
             this.DaysOffBalanceLabel.TabIndex = 2;
             this.DaysOffBalanceLabel.Text = "Days Off Balance";
-            this.DaysOffBalanceLabel.Click += new System.EventHandler(this.FirstNameLabel_Click);
             // 
             // DaysOffBalanceTextBox
             // 
@@ -309,7 +306,6 @@ namespace AbsenceTrackerUI.Forms
             this.Name = "AbsenceTrackerDashboard";
             this.Text = "Absence Tracker Dashboard";
             this.Activated += new System.EventHandler(this.AbsenceTrackerDashboard_Activated);
-            this.Deactivate += new System.EventHandler(this.AbsenceTrackerDashboard_Deactivated);
             this.Load += new System.EventHandler(this.AbsenceTrackerDashboard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.AbsencesDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.absenceModelBindingSource)).EndInit();

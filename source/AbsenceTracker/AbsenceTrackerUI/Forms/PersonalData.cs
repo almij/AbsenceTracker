@@ -21,11 +21,6 @@ namespace AbsenceTrackerUI.Forms
             CallerForm.Enabled = true;
         }
 
-        private void ProjectsInvolvedInLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void SaveButton_Click(object sender, EventArgs e)
         {
             //TODO add validation

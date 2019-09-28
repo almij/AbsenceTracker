@@ -22,11 +22,6 @@ namespace AbsenceTrackerUI.Forms
             RefreshFormFields();
         }
 
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void SaveButton_Click(object sender, EventArgs e)
         {
             if (!ValidateForm()) return;
