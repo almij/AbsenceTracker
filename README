@@ -9,3 +9,5 @@ practical use - keep track of your days off balance
 data stored in Sql
 log in by username
 postgresql is now setup in the cloud
+
+upd. cloud postgresql setup is now broken
